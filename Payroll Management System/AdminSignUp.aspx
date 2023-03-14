@@ -17,7 +17,7 @@
                   <div class="row">
                      <div class="col">
                         <center>
-                           <h4>Your Profile</h4>
+                           <h4>SIGN UP!</h4>
                            <span>Account Status - </span>
                            <asp:Label class="badge badge-pill badge-info" ID="Label1" runat="server" Text="Your status"></asp:Label>
                         </center>
@@ -32,27 +32,27 @@
                      <div class="col-md-6">
                         <label>Full Name</label>
                         <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Full Name"></asp:TextBox>
+                           <asp:TextBox CssClass="form-control" ID="txtname" runat="server" placeholder="Full Name" OnTextChanged="txtname_TextChanged"></asp:TextBox>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <label>Date of Birth</label>
                         <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" placeholder="Password" TextMode="Date" ></asp:TextBox>
+                           <asp:TextBox CssClass="form-control" ID="txtdob" runat="server" placeholder="Password" TextMode="Date" ></asp:TextBox>
                         </div>
                      </div>
                   </div>
                   <div class="row">
-                     <div class="col-md-6"
+                     <div class="col-md-6">
                         <label>Contact No</label>
                         <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="TextBox3" runat="server" placeholder="Contact No" TextMode="Number"></asp:TextBox>
+                           <asp:TextBox CssClass="form-control" ID="txtphone" runat="server" placeholder="Contact No" MaxLength="10"></asp:TextBox>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <label>Email ID</label>
                         <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="TextBox4" runat="server" placeholder="Email ID" TextMode="Email"></asp:TextBox>
+                           <asp:TextBox CssClass="form-control" ID="txtmail" runat="server" placeholder="Email ID" TextMode="Email"></asp:TextBox>
                         </div>
                      </div>
                   </div>
@@ -60,7 +60,7 @@
                      <div class="col-md-4">
                         <label>State</label>
                         <div class="form-group">
-                           <asp:DropDownList class="form-control" ID="DropDownList1" runat="server">
+                           <asp:DropDownList class="form-control" ID="ddlstate" runat="server">
                               <asp:ListItem Text="Select" Value="select" />
                               <asp:ListItem Text="Andhra Pradesh" Value="Andhra Pradesh" />
                               <asp:ListItem Text="Arunachal Pradesh" Value="Arunachal Pradesh" />
@@ -98,13 +98,13 @@
                      <div class="col-md-4">
                         <label>City</label>
                         <div class="form-group">
-                           <asp:TextBox class="form-control" ID="TextBox6" runat="server" placeholder="City"></asp:TextBox>
+                           <asp:TextBox class="form-control" ID="txtcity" runat="server" placeholder="City"></asp:TextBox>
                         </div>
                      </div>
                      <div class="col-md-4">
                         <label>Pincode</label>
                         <div class="form-group">
-                           <asp:TextBox class="form-control" ID="TextBox7" runat="server" placeholder="Pincode" TextMode="Number"></asp:TextBox>
+                           <asp:TextBox class="form-control" ID="txtpin" runat="server" placeholder="Pincode" TextMode="Number"></asp:TextBox>
                         </div>
                      </div>
                   </div>
@@ -112,7 +112,7 @@
                      <div class="col">
                         <label>Full Address</label>
                         <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="TextBox5" runat="server" placeholder="Full Address" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                           <asp:TextBox CssClass="form-control" ID="txtaddress" runat="server" placeholder="Full Address" TextMode="MultiLine" Rows="2"></asp:TextBox>
                         </div>
                      </div>
                   </div>
@@ -127,19 +127,22 @@
                      <div class="col-md-4">
                         <label>User ID</label>
                         <div class="form-group">
-                           <asp:TextBox class="form-control" ID="TextBox8" runat="server" placeholder="User ID" ReadOnly="false"></asp:TextBox>
+                           <asp:TextBox class="form-control" ID="txtid" runat="server" placeholder="User ID" ReadOnly="false"></asp:TextBox>
                         </div>
                      </div>
                      <div class="col-md-4">
                         <label>Password</label>
                         <div class="form-group">
-                           <asp:TextBox class="form-control" ID="TextBox10" runat="server" placeholder="Max.10 characters" TextMode="Password"></asp:TextBox>
+                           <asp:TextBox class="form-control" ID="txtpass" runat="server" placeholder="Max.10 characters" TextMode="Password" onBlur="validatePassword(this.value)"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="validator" runat="server" ControlToValidate="txtpass" 
+                                ErrorMessage="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one numeric digit, and a special character." 
+                                ForeColor="Red" ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z])[^\s]{8,}$"></asp:RegularExpressionValidator>
                         </div>
                      </div>
                         <div class="col-md-4">
                         <label>Employee Class</label>
                         <div class="form-group">
-                           <asp:TextBox class="form-control" ID="TextBox9" runat="server" placeholder="Position"></asp:TextBox>
+                           <asp:TextBox class="form-control" ID="txtclass" runat="server" placeholder="Position"></asp:TextBox>
                         </div>
                      </div>
                   </div>

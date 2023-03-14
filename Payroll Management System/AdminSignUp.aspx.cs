@@ -11,11 +11,16 @@ using System.Globalization;
 
 namespace Payroll_Management_System
 {
+    [Obsolete]
     public partial class AdminSignUp : System.Web.UI.Page
     {
         string conn = ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                DataBind();
+            }
         }
 
         [Obsolete]
@@ -28,6 +33,8 @@ namespace Payroll_Management_System
             else
             {
                 SignUpNewUser();
+                clearform();
+                Response.Redirect("AdminLogin.aspx");
             }
         }
 
@@ -41,7 +48,7 @@ namespace Payroll_Management_System
                 {
                     conn2.Open();
                 }
-                OracleCommand cmd2 = new OracleCommand("select * from adminsignup where adminid = '" + TextBox8.Text.Trim() + "'", conn2);
+                OracleCommand cmd2 = new OracleCommand("select * from adminsignup where adminid = '" + txtid.Text.Trim() + "'", conn2);
                 OracleDataAdapter da = new OracleDataAdapter(cmd2);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -58,46 +65,90 @@ namespace Payroll_Management_System
 
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                Response.Write("<script>alert('Invalid ID');</script>");
                 return false;
+                throw (ex);
             }
         }
-
-        [Obsolete]
         void SignUpNewUser()
         {
-            DateTime dob = Convert.ToDateTime(TextBox2.Text.ToString()).Date;
+            DateTime dob = Convert.ToDateTime(txtdob.Text.ToString()).Date;
             DateTimeFormatInfo mfi = new DateTimeFormatInfo();
             string strMonthName = mfi.GetAbbreviatedMonthName(dob.Month);
             string _dob = dob.Day + "-" + strMonthName + "-" + dob.Year;
 
             try
             {
-                var cmdText = "insert into adminsignup(full_name, dob, phone, email, state, city, pincode, address, adminid, password, empclass, account_status)values(:full_name,:dob,:phone,:email,:state,:city,:pincode,:address,:adminid,:pass,:empclass,:account_status)";
+                var cmdText = "insert into adminsignup(full_name,dob,phone,email,state,city,pincode,address,adminid,pass,empclass)values(:full_name,:dob,:phone,:email,:state,:city,:pincode,:address,:adminid,:pass,:empclass)";
                 using (OracleConnection conn1 = new OracleConnection(conn))
                 using (OracleCommand cmd = new OracleCommand(cmdText, conn1))
 
                 {
-                    cmd.Parameters.AddWithValue("full_name", TextBox1.Text.Trim());
+                    cmd.Parameters.AddWithValue("full_name", txtname.Text.Trim());
                     cmd.Parameters.AddWithValue("dob", _dob);
-                    cmd.Parameters.AddWithValue("phone", TextBox3.Text.Trim());
-                    cmd.Parameters.AddWithValue("email", TextBox4.Text.Trim());
-                    cmd.Parameters.AddWithValue("state", DropDownList1.SelectedItem.Value);
-                    cmd.Parameters.AddWithValue("city", TextBox6.Text.Trim());
-                    cmd.Parameters.AddWithValue("pincode", TextBox7.Text.Trim());
-                    cmd.Parameters.AddWithValue("address", TextBox5.Text.Trim());
-                    cmd.Parameters.AddWithValue("adminid", TextBox8.Text.Trim());
-                    cmd.Parameters.AddWithValue("pass", TextBox10.Text.Trim());
-                    cmd.Parameters.AddWithValue("empclass", TextBox9.Text.Trim());
-                    cmd.Parameters.AddWithValue("account_status", "pending");
+                    cmd.Parameters.AddWithValue("phone", txtphone.Text.Trim());
+                    cmd.Parameters.AddWithValue("email", txtmail.Text.Trim());
+                    cmd.Parameters.AddWithValue("state", ddlstate.SelectedItem.Value);
+                    cmd.Parameters.AddWithValue("city", txtcity.Text.Trim());
+                    cmd.Parameters.AddWithValue("pincode", txtpin.Text.Trim());
+                    cmd.Parameters.AddWithValue("address", txtaddress.Text.Trim());
+                    cmd.Parameters.AddWithValue("adminid", txtid.Text.Trim());
+                    cmd.Parameters.AddWithValue("pass", txtpass.Text.Trim());
+                    cmd.Parameters.AddWithValue("empclass", txtclass.Text.Trim());
                     cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
+
+                    Response.Write("<script>alert('Signed Up Successfuly');</script>");
                 }
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                Response.Write("<script>alert('Invalid ID');</script>");
+                throw (ex);
             }
+        }
+
+        protected void txtname_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                OracleConnection conn2 = new OracleConnection(conn);
+                if (conn2.State == ConnectionState.Closed)
+                {
+                    conn2.Open();
+                }
+                string department = txtname.Text;
+                //string id = "";
+                if (department == txtname.Text)
+                {
+                    OracleCommand cmd = new OracleCommand("select 'ADMIN'||admin_seq.nextval ADMIN_ID from dual", conn2);
+                    OracleDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            txtid.Text = dr["ADMIN_ID"].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        void clearform()
+        {
+            txtname.Text = "";
+            txtphone.Text = "";
+            txtdob.Text = "";
+            txtmail.Text = "";
+            //ddlstate.SelectedValue = "";
+            txtcity.Text = "";
+            txtpin.Text = "";
+            txtaddress.Text = "";
+            txtpass.Text = "";
+            txtclass.Text = "";
         }
     }
 }

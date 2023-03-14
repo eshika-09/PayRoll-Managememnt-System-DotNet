@@ -73,3 +73,8 @@ C:\Users\lgeil\Desktop\Intern- EshikaDB\Payroll Management System\Payroll Manage
 C:\Users\lgeil\Desktop\Intern- EshikaDB\Payroll Management System\Payroll Management System\obj\Debug\Payroll Management System.dll
 C:\Users\lgeil\Desktop\Intern- EshikaDB\Payroll Management System\Payroll Management System\obj\Debug\Payroll Management System.pdb
 C:\Users\lgeil\Desktop\Intern- EshikaDB\Payroll Management System\Payroll Management System\obj\Debug\Payroll Management System.csproj.AssemblyReference.cache
+C:\Users\lgeil\Desktop\Intern- EshikaDB\Payroll Management System\Payroll Management System\bin\BouncyCastle.Crypto.dll
+C:\Users\lgeil\Desktop\Intern- EshikaDB\Payroll Management System\Payroll Management System\bin\itextsharp.dll
+C:\Users\lgeil\Desktop\Intern- EshikaDB\Payroll Management System\Payroll Management System\bin\itextsharp.xml
+C:\Users\lgeil\Desktop\Intern- EshikaDB\Payroll Management System\Payroll Management System\bin\itextsharp.xmlworker.dll
+C:\Users\lgeil\Desktop\Intern- EshikaDB\Payroll Management System\Payroll Management System\obj\Debug\Payroll Management System.csproj.ResolveComReference.cache

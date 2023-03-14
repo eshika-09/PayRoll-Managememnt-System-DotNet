@@ -11,6 +11,7 @@ using System.Globalization;
 
 namespace Payroll_Management_System
 {
+    [Obsolete]
     public partial class AdminLogin : System.Web.UI.Page
     {
         string conn = ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
@@ -18,10 +19,9 @@ namespace Payroll_Management_System
         {
 
         }
-
-        [Obsolete]
         protected void Button1_Click(object sender, EventArgs e)
         {
+
             try
             {
                 OracleConnection conn1 = new OracleConnection(conn);
@@ -29,7 +29,7 @@ namespace Payroll_Management_System
                 {
                     conn1.Open();
                 }
-                OracleCommand cmd = new OracleCommand("select * from adminsignup where adminid = '" + TextBox1.Text.Trim() + "' and password = '" + TextBox2.Text.Trim() + "'", conn1);
+                OracleCommand cmd = new OracleCommand("select * from adminsignup where adminid = '" + txtid.Text.Trim() + "' and pass = '" + txtpass.Text.Trim() + "'", conn1);
                 OracleDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows)
                 {
@@ -39,11 +39,11 @@ namespace Payroll_Management_System
 
                         Session["username"] = dr.GetValue(8).ToString();
                         Session["fullname"] = dr.GetValue(0).ToString();
-                        Session["role"] = "admin";
+                        Session["role"] = "Admin";
                         Session["status"] = dr.GetValue(11).ToString();
-                    }
-                    Response.Redirect("HomePage.aspx");
 
+                    }
+                    Response.Redirect("Admin_Dash.aspx");
                 }
                 else
                 {
@@ -52,7 +52,7 @@ namespace Payroll_Management_System
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
         }
     }

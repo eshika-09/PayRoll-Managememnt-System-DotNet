@@ -1,6 +1,6 @@
+select * from dba_dml_locks;
 
 
-select * from signup;
+select distinct owner from all_objects
 
-insert into signup(full_name,dob,phone,email,state,city,pincode,address,empid,pass,empclass,account_status)
-values('Amit','',@phone,@email,@state,@city,@pincode,@address,@empid,@pass,@empclass,@account_status)
+SELECT column_name FROM table_name WHERE column_name = 'value' FOR UPDATE WAIT 5;

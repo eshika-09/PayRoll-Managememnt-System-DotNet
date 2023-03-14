@@ -44,6 +44,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.3\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Oracle.Web, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -53,6 +62,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -109,8 +119,153 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="About1.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="AdminSignUp.aspx" />
+    <Content Include="assets\advanced-datatable\media\css\demo_page.css" />
+    <Content Include="assets\advanced-datatable\media\css\demo_table.css" />
+    <Content Include="assets\advanced-datatable\media\images\back_disabled.png" />
+    <Content Include="assets\advanced-datatable\media\images\back_enabled.png" />
+    <Content Include="assets\advanced-datatable\media\images\back_enabled_hover.png" />
+    <Content Include="assets\advanced-datatable\media\images\forward_disabled.png" />
+    <Content Include="assets\advanced-datatable\media\images\forward_enabled.png" />
+    <Content Include="assets\advanced-datatable\media\images\forward_enabled_hover.png" />
+    <Content Include="assets\advanced-datatable\media\images\sort_asc.png" />
+    <Content Include="assets\advanced-datatable\media\images\sort_asc_disabled.png" />
+    <Content Include="assets\advanced-datatable\media\images\sort_both.png" />
+    <Content Include="assets\advanced-datatable\media\images\sort_desc.png" />
+    <Content Include="assets\advanced-datatable\media\images\sort_desc_disabled.png" />
+    <Content Include="assets\advanced-datatable\media\js\jquery.dataTables.js" />
+    <Content Include="assets\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="assets\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="assets\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="assets\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="assets\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="assets\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="assets\bootstrap-daterangepicker\date.js" />
+    <Content Include="assets\bootstrap-daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="assets\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="assets\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="assets\bootstrap-daterangepicker\moment.min.js" />
+    <Content Include="assets\bootstrap-datetimepicker\css\datetimepicker.css" />
+    <Content Include="assets\bootstrap-datetimepicker\js\bootstrap-datetimepicker.js" />
+    <Content Include="assets\bootstrap-fileupload\bootstrap-fileupload.css" />
+    <Content Include="assets\bootstrap-fileupload\bootstrap-fileupload.js" />
+    <Content Include="assets\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="assets\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="assets\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="assets\chart-master\Chart.js" />
+    <Content Include="assets\ckeditor\ckeditor.js" />
+    <Content Include="assets\data-tables\DT_bootstrap.css" />
+    <Content Include="assets\data-tables\DT_bootstrap.js" />
+    <Content Include="assets\data-tables\images\sort_asc.png" />
+    <Content Include="assets\data-tables\images\sort_asc_disabled.html" />
+    <Content Include="assets\data-tables\images\sort_both.png" />
+    <Content Include="assets\data-tables\images\sort_desc.png" />
+    <Content Include="assets\data-tables\images\sort_desc_disabled.html" />
+    <Content Include="assets\data-tables\jquery.dataTables.js" />
+    <Content Include="assets\dropzone\css\dropzone.css" />
+    <Content Include="assets\dropzone\dropzone.js" />
+    <Content Include="assets\dropzone\images\spritemap%402x.png" />
+    <Content Include="assets\dropzone\images\spritemap.png" />
+    <Content Include="assets\fancybox\source\blank.gif" />
+    <Content Include="assets\fancybox\source\fancybox_loading.gif" />
+    <Content Include="assets\fancybox\source\fancybox_overlay.png" />
+    <Content Include="assets\fancybox\source\fancybox_sprite.png" />
+    <Content Include="assets\fancybox\source\jquery.fancybox.css" />
+    <Content Include="assets\fancybox\source\jquery.fancybox.js" />
+    <Content Include="assets\file-uploader\css\jquery.fileupload-noscript.css" />
+    <Content Include="assets\file-uploader\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="assets\file-uploader\css\jquery.fileupload-ui.css" />
+    <Content Include="assets\file-uploader\css\jquery.fileupload.css" />
+    <Content Include="assets\file-uploader\img\loading.gif" />
+    <Content Include="assets\file-uploader\img\progressbar.gif" />
+    <Content Include="assets\file-uploader\js\jquery.fileupload-audio.js" />
+    <Content Include="assets\file-uploader\js\jquery.fileupload-image.js" />
+    <Content Include="assets\file-uploader\js\jquery.fileupload-process.js" />
+    <Content Include="assets\file-uploader\js\jquery.fileupload-ui.js" />
+    <Content Include="assets\file-uploader\js\jquery.fileupload-validate.js" />
+    <Content Include="assets\file-uploader\js\jquery.fileupload-video.js" />
+    <Content Include="assets\file-uploader\js\jquery.fileupload.js" />
+    <Content Include="assets\file-uploader\js\jquery.iframe-transport.js" />
+    <Content Include="assets\file-uploader\js\main.js" />
+    <Content Include="assets\file-uploader\js\vendor\jquery.ui.widget.js" />
+    <Content Include="assets\flot\jquery.flot.crosshair.js" />
+    <Content Include="assets\flot\jquery.flot.js" />
+    <Content Include="assets\flot\jquery.flot.pie.js" />
+    <Content Include="assets\flot\jquery.flot.resize.js" />
+    <Content Include="assets\flot\jquery.flot.stack.js" />
+    <Content Include="assets\font-awesome\css\font-awesome.css" />
+    <Content Include="assets\font-awesome\fonts\fontawesome-webfontba72.html" />
+    <Content Include="assets\font-awesome\fonts\fontawesome-webfontba72.svg" />
+    <Content Include="assets\fuelux\css\tree-style.css" />
+    <Content Include="assets\fuelux\img\tree-icons.png" />
+    <Content Include="assets\fuelux\js\spinner.min.js" />
+    <Content Include="assets\fuelux\js\tree.min.js" />
+    <Content Include="assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
+    <Content Include="assets\gritter\css\jquery.gritter.css" />
+    <Content Include="assets\gritter\images\gritter-light.png" />
+    <Content Include="assets\gritter\images\gritter.png" />
+    <Content Include="assets\gritter\images\ie-spacer.gif" />
+    <Content Include="assets\gritter\js\jquery.gritter.js" />
+    <Content Include="assets\jcrop\css\Jcrop.gif" />
+    <Content Include="assets\jcrop\css\jquery.Jcrop.min.css" />
+    <Content Include="assets\jcrop\js\jquery.color.js" />
+    <Content Include="assets\jcrop\js\jquery.Jcrop.min.js" />
+    <Content Include="assets\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
+    <Content Include="assets\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
+    <Content Include="assets\jquery-file-upload\css\jquery.fileupload-ui.css" />
+    <Content Include="assets\jquery-file-upload\img\loading.gif" />
+    <Content Include="assets\jquery-file-upload\img\progressbar.gif" />
+    <Content Include="assets\jquery-file-upload\js\jquery.fileupload-fp.js" />
+    <Content Include="assets\jquery-file-upload\js\jquery.fileupload-ui.js" />
+    <Content Include="assets\jquery-file-upload\js\jquery.fileupload.js" />
+    <Content Include="assets\jquery-file-upload\js\jquery.iframe-transport.js" />
+    <Content Include="assets\jquery-file-upload\js\vendor\canvas-to-blob.min.js" />
+    <Content Include="assets\jquery-file-upload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="assets\jquery-file-upload\js\vendor\load-image.min.js" />
+    <Content Include="assets\jquery-file-upload\js\vendor\tmpl.min.js" />
+    <Content Include="assets\jquery-knob\js\jquery.knob.js" />
+    <Content Include="assets\jquery-multi-select\css\multi-select.css" />
+    <Content Include="assets\jquery-multi-select\img\switch.png" />
+    <Content Include="assets\jquery-multi-select\js\jquery.multi-select.js" />
+    <Content Include="assets\jquery-multi-select\js\jquery.quicksearch.js" />
+    <Content Include="assets\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="assets\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="assets\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="assets\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="assets\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="assets\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="assets\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="assets\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="assets\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="assets\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="assets\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="assets\jquery-ui\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="assets\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="assets\jquery-ui\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="assets\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="assets\jquery-ui\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="assets\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="assets\morris.js-0.4.3\morris.css" />
+    <Content Include="assets\morris.js-0.4.3\morris.min.js" />
+    <Content Include="assets\morris.js-0.4.3\raphael-min.js" />
+    <Content Include="assets\nestable\jquery.nestable.css" />
+    <Content Include="assets\nestable\jquery.nestable.js" />
+    <Content Include="assets\summernote\dist\summernote.css" />
+    <Content Include="assets\summernote\dist\summernote.min.js" />
+    <Content Include="assets\toastr-master\toastr.css" />
+    <Content Include="assets\toastr-master\toastr.js" />
+    <Content Include="assets\xchart\d3.v3.min.js" />
+    <Content Include="assets\xchart\xcharts.css" />
+    <Content Include="assets\xchart\xcharts.min.js" />
+    <Content Include="bin\Payroll Management System.dll" />
+    <Content Include="bin\Payroll Management System.pdb" />
     <Content Include="Bootstrap\CSS\bootstrap.min.css" />
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\jquery-3.2.1.slim.min.js" />
@@ -124,9 +279,11 @@
     <Content Include="Datatables\CSS\jquery.dataTables.css" />
     <Content Include="Datatables\JS\jquery.dataTables.js" />
     <Content Include="Default.aspx" />
-    <Content Include="EmpDetail.aspx" />
+    <Content Include="Demo.aspx" />
     <Content Include="EmployeeProfile.aspx" />
     <Content Include="EmpManagement.aspx" />
+    <Content Include="EmpDetail.aspx" />
+    <Content Include="Emp_Dash.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="FontAwesome\css\all.css" />
     <Content Include="FontAwesome\css\all.min.css" />
@@ -2193,18 +2350,50 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="HomePage.aspx" />
+    <Content Include="Admin_Dash.aspx" />
+    <Content Include="Images\Approve.png" />
+    <Content Include="Images\Emp_Manage.png" />
+    <Content Include="Images\Emp_Report.png" />
     <Content Include="Images\icons8-cash.gif" />
     <Content Include="Images\leave.png" />
+    <Content Include="Images\Leave_Approve.png" />
     <Content Include="Images\lg.png" />
     <Content Include="Images\List.gif" />
     <Content Include="Images\login.gif" />
     <Content Include="Images\protection.gif" />
+    <Content Include="Images\Salary.png" />
+    <Content Include="Images\Salary_Rep.png" />
+    <Content Include="LeaveApprove.aspx" />
     <Content Include="LeaveIssue.aspx" />
     <Content Include="LogOut.aspx" />
-    <Content Include="Main CSS\CustomeStyleSheet.css" />
+    <Content Include="Main_CSS\CustomeStyleSheet.css" />
+    <Content Include="meetup\css\bootstrap-theme.css" />
+    <Content Include="meetup\css\bootstrap-theme.min.css" />
+    <Content Include="meetup\css\bootstrap.css" />
+    <Content Include="meetup\css\bootstrap.min.css" />
+    <Content Include="meetup\css\dosis-font.css" />
+    <Content Include="meetup\css\style.css" />
+    <Content Include="meetup\css\themify-icons.css" />
+    <Content Include="meetup\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="meetup\fonts\themify.svg" />
+    <Content Include="meetup\img\meetup-logo.png" />
+    <Content Include="meetup\img\rocket.png" />
+    <Content Include="meetup\img\speaker-1.png" />
+    <Content Include="meetup\img\speaker-2.png" />
+    <Content Include="meetup\img\speaker-3.png" />
+    <Content Include="meetup\img\speaker-4.png" />
+    <Content Include="meetup\img\speaker-5.png" />
+    <Content Include="meetup\img\speaker-6.png" />
+    <Content Include="meetup\index.html" />
+    <Content Include="meetup\js\bootstrap.js" />
+    <Content Include="meetup\js\bootstrap.min.js" />
+    <Content Include="meetup\js\jquery.easing.min.js" />
+    <Content Include="meetup\js\jquery.min.js" />
+    <Content Include="meetup\js\scrolling-nav.js" />
+    <Content Include="meetup\js\validator.js" />
+    <Content Include="SalaryReport.aspx" />
     <Content Include="SignUp.aspx" />
-    <Content Include="UserLogin.aspx" />
+    <Content Include="EmpLogin.aspx" />
     <Content Include="FontAwesome\less\brands.less" />
     <Content Include="FontAwesome\less\fontawesome.less" />
     <Content Include="FontAwesome\less\regular.less" />
@@ -2258,6 +2447,77 @@
     <Content Include="FontAwesome\webfonts\fa-solid-900.woff2" />
     <Content Include="FontAwesome\webfonts\fa-v4compatibility.ttf" />
     <Content Include="FontAwesome\webfonts\fa-v4compatibility.woff2" />
+    <Content Include="meetup\fonts\dosis\3isE9muMMOq1K7TQ7HkKvIDGDUGfDkXyfkzVDelzfFk.woff2" />
+    <Content Include="meetup\fonts\dosis\O6SOu9hYsPHTU43R17NS5XYhjbSpvc47ee6xR_80Hnw.woff2" />
+    <Content Include="meetup\fonts\dosis\oaBFj7Fz9Y9_eW3k9Jd9X6CWcynf_cDxXwCLxiixG1c.woff2" />
+    <Content Include="meetup\fonts\dosis\RPKDmaFi75RJkvjWaDDb0nYhjbSpvc47ee6xR_80Hnw.woff2" />
+    <Content Include="meetup\fonts\dosis\VK-RlLrn4NFhRGqPkj6IwBkAz4rYn47Zy2rvigWQf6w.woff2" />
+    <Content Include="meetup\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="meetup\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="meetup\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="meetup\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="meetup\fonts\themify.eot" />
+    <Content Include="meetup\fonts\themify.ttf" />
+    <Content Include="meetup\fonts\themify.woff" />
+    <Content Include="assets\advanced-datatable\media\css\vssver2.scc" />
+    <Content Include="assets\advanced-datatable\media\images\vssver2.scc" />
+    <Content Include="assets\advanced-datatable\media\js\vssver2.scc" />
+    <Content Include="assets\bootstrap-colorpicker\css\vssver2.scc" />
+    <Content Include="assets\bootstrap-colorpicker\img\vssver2.scc" />
+    <Content Include="assets\bootstrap-colorpicker\js\vssver2.scc" />
+    <Content Include="assets\bootstrap-datepicker\css\vssver2.scc" />
+    <Content Include="assets\bootstrap-datepicker\js\vssver2.scc" />
+    <Content Include="assets\bootstrap-daterangepicker\vssver2.scc" />
+    <Content Include="assets\bootstrap-datetimepicker\css\vssver2.scc" />
+    <Content Include="assets\bootstrap-datetimepicker\js\vssver2.scc" />
+    <Content Include="assets\bootstrap-fileupload\vssver2.scc" />
+    <Content Include="assets\bootstrap-inputmask\vssver2.scc" />
+    <Content Include="assets\bootstrap-timepicker\compiled\vssver2.scc" />
+    <Content Include="assets\bootstrap-timepicker\js\vssver2.scc" />
+    <Content Include="assets\bootstrap-wysihtml5\vssver2.scc" />
+    <Content Include="assets\chart-master\vssver2.scc" />
+    <Content Include="assets\ckeditor\vssver2.scc" />
+    <Content Include="assets\data-tables\images\vssver2.scc" />
+    <Content Include="assets\data-tables\vssver2.scc" />
+    <Content Include="assets\dropzone\css\vssver2.scc" />
+    <Content Include="assets\dropzone\images\vssver2.scc" />
+    <Content Include="assets\dropzone\vssver2.scc" />
+    <Content Include="assets\fancybox\source\vssver2.scc" />
+    <Content Include="assets\file-uploader\css\vssver2.scc" />
+    <Content Include="assets\file-uploader\img\vssver2.scc" />
+    <Content Include="assets\file-uploader\js\vendor\vssver2.scc" />
+    <Content Include="assets\file-uploader\js\vssver2.scc" />
+    <Content Include="assets\flot\vssver2.scc" />
+    <Content Include="assets\font-awesome\css\vssver2.scc" />
+    <Content Include="assets\font-awesome\fonts\fontawesome-webfontba72.eot" />
+    <Content Include="assets\font-awesome\fonts\fontawesome-webfontba72.woff" />
+    <Content Include="assets\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\font-awesome\fonts\vssver2.scc" />
+    <Content Include="assets\fuelux\css\vssver2.scc" />
+    <Content Include="assets\fuelux\img\vssver2.scc" />
+    <Content Include="assets\fuelux\js\vssver2.scc" />
+    <Content Include="assets\fullcalendar\fullcalendar\vssver2.scc" />
+    <Content Include="assets\gritter\css\vssver2.scc" />
+    <Content Include="assets\gritter\images\vssver2.scc" />
+    <Content Include="assets\gritter\js\vssver2.scc" />
+    <Content Include="assets\jcrop\css\vssver2.scc" />
+    <Content Include="assets\jcrop\js\vssver2.scc" />
+    <Content Include="assets\jquery-easy-pie-chart\vssver2.scc" />
+    <Content Include="assets\jquery-file-upload\css\vssver2.scc" />
+    <Content Include="assets\jquery-file-upload\img\vssver2.scc" />
+    <Content Include="assets\jquery-file-upload\js\vendor\vssver2.scc" />
+    <Content Include="assets\jquery-file-upload\js\vssver2.scc" />
+    <Content Include="assets\jquery-knob\js\vssver2.scc" />
+    <Content Include="assets\jquery-multi-select\css\vssver2.scc" />
+    <Content Include="assets\jquery-multi-select\img\vssver2.scc" />
+    <Content Include="assets\jquery-multi-select\js\vssver2.scc" />
+    <Content Include="assets\jquery-ui\images\vssver2.scc" />
+    <Content Include="assets\jquery-ui\vssver2.scc" />
+    <Content Include="assets\morris.js-0.4.3\vssver2.scc" />
+    <Content Include="assets\nestable\vssver2.scc" />
+    <Content Include="assets\summernote\dist\vssver2.scc" />
+    <Content Include="assets\toastr-master\vssver2.scc" />
+    <Content Include="assets\xchart\vssver2.scc" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2292,6 +2552,20 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About1.aspx.cs">
+      <DependentUpon>About1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About1.aspx.designer.cs">
+      <DependentUpon>About1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminLogin.aspx.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2307,13 +2581,6 @@
       <DependentUpon>AdminSignUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -2329,12 +2596,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EmpDetail.aspx.cs">
-      <DependentUpon>EmpDetail.aspx</DependentUpon>
+    <Compile Include="Demo.aspx.cs">
+      <DependentUpon>Demo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EmpDetail.aspx.designer.cs">
-      <DependentUpon>EmpDetail.aspx</DependentUpon>
+    <Compile Include="Demo.aspx.designer.cs">
+      <DependentUpon>Demo.aspx</DependentUpon>
     </Compile>
     <Compile Include="EmployeeProfile.aspx.cs">
       <DependentUpon>EmployeeProfile.aspx</DependentUpon>
@@ -2350,6 +2617,20 @@
     <Compile Include="EmpManagement.aspx.designer.cs">
       <DependentUpon>EmpManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EmpDetail.aspx.cs">
+      <DependentUpon>EmpDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmpDetail.aspx.designer.cs">
+      <DependentUpon>EmpDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Emp_Dash.aspx.cs">
+      <DependentUpon>Emp_Dash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Emp_Dash.aspx.designer.cs">
+      <DependentUpon>Emp_Dash.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GenerateSalary.aspx.cs">
       <DependentUpon>GenerateSalary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2360,12 +2641,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HomePage.aspx.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
+    <Compile Include="Admin_Dash.aspx.cs">
+      <DependentUpon>Admin_Dash.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HomePage.aspx.designer.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
+    <Compile Include="Admin_Dash.aspx.designer.cs">
+      <DependentUpon>Admin_Dash.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveApprove.aspx.cs">
+      <DependentUpon>LeaveApprove.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LeaveApprove.aspx.designer.cs">
+      <DependentUpon>LeaveApprove.aspx</DependentUpon>
     </Compile>
     <Compile Include="LeaveIssue.aspx.cs">
       <DependentUpon>LeaveIssue.aspx</DependentUpon>
@@ -2381,7 +2669,15 @@
     <Compile Include="LogOut.aspx.designer.cs">
       <DependentUpon>LogOut.aspx</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalaryReport.aspx.cs">
+      <DependentUpon>SalaryReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalaryReport.aspx.designer.cs">
+      <DependentUpon>SalaryReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SignUp.aspx.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2396,12 +2692,12 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
-    <Compile Include="UserLogin.aspx.cs">
-      <DependentUpon>UserLogin.aspx</DependentUpon>
+    <Compile Include="EmpLogin.aspx.cs">
+      <DependentUpon>EmpLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserLogin.aspx.designer.cs">
-      <DependentUpon>UserLogin.aspx</DependentUpon>
+    <Compile Include="EmpLogin.aspx.designer.cs">
+      <DependentUpon>EmpLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -2425,6 +2721,35 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
