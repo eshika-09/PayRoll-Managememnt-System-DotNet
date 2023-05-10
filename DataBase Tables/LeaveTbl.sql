@@ -18,11 +18,12 @@ attribute4 varchar2(50),
 attribute5 varchar2(50)
 );
 
-select e.* from leavetbl e order by e.createddate desc;
+select e.* from leavetbl e where empid = 'IT16' order by e.createddate desc;
 update leavetbl set approvestatus='0' where approvestatus='Rejected' and leaveid in ('30','35','31','32');
 
 --update leavetbl set approvestatus='2' where EMPID='';
-delete from leavetbl where approvestatus ='0';
+delete from leavetbl where empid = 'IT16';
+delete from leavetbl where leaveid = 20;
 
 insert into leavetbl (empid, leaveid, leavecount, full_name, reason, strtdate,enddate,approvestatus)values(1, leave_seq.nextval,2, 'Eshika Goyal', 'reason', '18-Jan-2023', '20-Jan-2023', 0);
 

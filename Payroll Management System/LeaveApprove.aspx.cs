@@ -29,7 +29,7 @@ namespace Payroll_Management_System
             {
                 conn2.Open();
             }
-            OracleCommand cmd = new OracleCommand("select * from leavetbl where approvestatus='0'", conn2);
+            OracleCommand cmd = new OracleCommand("select * from leavetbl where approvestatus='Pending'", conn2);
             OracleDataAdapter da = new OracleDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);

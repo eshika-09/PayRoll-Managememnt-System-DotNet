@@ -33,7 +33,7 @@ namespace Payroll_Management_System
             {
                 SignUpNewUser();
                 Response.Write("<script>alert('Signed Up Succesfully');</script>");
-                Response.Redirect("AdminLogin.aspx");
+                Response.Redirect("EmpLogin.aspx");
             }
         }
 
@@ -90,7 +90,7 @@ namespace Payroll_Management_System
                     cmd.Parameters.AddWithValue("city", TextBox6.Text.Trim());
                     cmd.Parameters.AddWithValue("pincode", TextBox7.Text.Trim());
                     cmd.Parameters.AddWithValue("address", TextBox5.Text.Trim());
-                    cmd.Parameters.AddWithValue("EMP_ID", TextBox8.Text.Trim());
+                    cmd.Parameters.AddWithValue("emp_id", TextBox8.Text.Trim());
                     cmd.Parameters.AddWithValue("pass", TextBox10.Text.Trim());
                     cmd.Parameters.AddWithValue("empclass", TextBox9.Text.Trim());
                     cmd.Parameters.AddWithValue("account_status", "pending");

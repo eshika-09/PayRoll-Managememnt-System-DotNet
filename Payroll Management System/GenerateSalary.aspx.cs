@@ -19,6 +19,7 @@ namespace Payroll_Management_System
         {
             if (!IsPostBack)
             {
+
             }
         }
         protected void LinkButton4_Click(object sender, EventArgs e)
@@ -42,7 +43,7 @@ namespace Payroll_Management_System
                         DropDownList1.Text = dr["dept"].ToString();
                         TextBox5.Text = dr["basic_pay"].ToString();
                         Response.Write("<script>alert('" + dr.GetValue(1).ToString() + "');</script>");
-                        DataBind();
+                        DataBind(); 
                     }
                 }
                 else
@@ -150,6 +151,7 @@ namespace Payroll_Management_System
                         conn2.Open();
                         cmd.ExecuteNonQuery();
                         BindData();
+                        clearform();
                         Response.Write("<script>alert('Salary Genererated Successfully');</script>");
                         conn2.Close();
 
@@ -191,7 +193,7 @@ namespace Payroll_Management_System
                         TextBox15.Text = dr["earnings"].ToString();
                         TextBox16.Text = dr["deduction"].ToString();
                         TextBox17.Text = dr["NetSalary"].ToString();
-                        Response.Write("<script>alert('" + dr.GetValue(1).ToString() + "');</script>");
+                        clearform();
                     }
                 }
                 else
@@ -203,6 +205,26 @@ namespace Payroll_Management_System
             {
                 throw ex;
             }
+        }
+
+        void clearform()
+        {
+            DropDownList2.SelectedValue = "";
+            TextBox4.Text = "";
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox7.Text = "";
+            TextBox8.Text = "";
+            TextBox9.Text = "";
+            TextBox11.Text = "";
+            TextBox10.Text = "";
+            TextBox12.Text = "";
+            TextBox13.Text = "";
+            TextBox14.Text = "";
+            TextBox15.Text = "";
+            TextBox16.Text = "";
+            TextBox17.Text = "";
         }
     }
 }

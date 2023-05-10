@@ -22,6 +22,9 @@ constraint empid_pk primary key (empid));
 select * from signup;
 select * from adminsignup
 
+select full_name,account_status,dob,phone,email,state,city,pincode,address from signup
+
+
 --create table signup1 as  select * from signup;
 --select * from signup1 where empid= 5 --for update
 Aman221001
@@ -86,6 +89,16 @@ insert into adminsignup(full_name,dob,phone,email,state,city,pincode,address,adm
 'Shimla',608703,'Full Address','ADMIN1002',12345678,'GA');
 
 --drop table adminsignup
+
+
+
+
+
+
+
+
+
+class="btn btn-outline-secondary btn-block btn-lg"
 
             
 

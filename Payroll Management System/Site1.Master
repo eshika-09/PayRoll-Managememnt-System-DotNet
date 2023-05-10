@@ -17,17 +17,22 @@
 
 
     <style type="text/css">
+        body {
+            background: rgb(153,0,65);
+            background: linear-gradient(90deg, rgba(153,0,65,0.8687850140056023) 0%, rgba(153,153,153,0.9528186274509804) 35%, rgba(255,255,255,0.7875525210084033) 100%);
+        }
 
         /*HEADER AND NAV BAR*/
-        .active1{
-            float:right;
-            display:inline;
-            text-decoration:none;
-            list-style:none;
+        .active1 {
+            float: right;
+            display: inline;
+            text-decoration: none;
+            list-style: none;
         }
-   .navbar navbar-expand-lg navbar-light{
-       visibility:hidden;
-   }
+
+        .navbar navbar-expand-lg navbar-light {
+            visibility:hidden;
+        }
 
         /*FOOTER*/
         footer {
@@ -48,50 +53,61 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+
 <body>
     <form id="form1" runat="server">
-        <div>
+
+        <div class="nav-bar">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="#">
                     <img src="Images/lg.png" width="50" height="50" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button> 
+                </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="About1.aspx">Home</a>
                         </li>
+
                         <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="ViewReq" runat="server" OnClick="ViewReq_Click" >View Requests</asp:LinkButton>
-                        </li>
-                        <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="UserLogin" runat="server" OnClick="UserLogin_Click" >User Login</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="UserLogin" runat="server" OnClick="UserLogin_Click">User Login</asp:LinkButton>
                         </li>
                         <li class="nav-item active">
                             <asp:LinkButton class="nav-link" ID="EmpSignUp" runat="server" OnClick="EmpSignUp_Click">Sign Up</asp:LinkButton>
                         </li>
-                      
                         <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="AdminLogin" runat="server" OnClick="AdminLogin_Click" >Admin Login</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="dashboard" runat="server" OnClick="dashboard_Click">Dashboard</asp:LinkButton>
                         </li>
                         <li class="nav-item active">
-                             <asp:LinkButton class="nav-link" ID="AdminSignUp" runat="server" OnClick="AdminSignUp_Click" >Admin Signup</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="dashboard1" runat="server" OnClick="dashboard1_Click">Dashboard</asp:LinkButton>
                         </li>
                         <li class="nav-item active">
-                             <asp:LinkButton class="nav-link" ID="EmpManage" runat="server" OnClick="EmpManage_Click" >Employee Management</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="AdminLogin" runat="server" OnClick="AdminLogin_Click">Admin Login</asp:LinkButton>
                         </li>
                         <li class="nav-item active">
-                               <asp:LinkButton class="nav-link" ID="SalarySlip" runat="server" OnClick="SalarySlip_Click">Salary Slip</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="ViewReq" runat="server" OnClick="ViewReq_Click">View Requests</asp:LinkButton>
                         </li>
                         <li class="nav-item active">
-                              <asp:LinkButton class="nav-link" ID="IssueLeave" runat="server" OnClick="IssueLeave_Click" >Leave Issuing</asp:LinkButton>
+                            <asp:LinkButton class="nav-link" ID="AdminSignUp" runat="server" OnClick="AdminSignUp_Click">Admin Signup</asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" ID="EmpManage" runat="server" OnClick="EmpManage_Click">Employee Management</asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" ID="SalarySlip" runat="server" OnClick="SalarySlip_Click">Salary Report</asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" ID="EmpSalarySlip" runat="server" OnClick="EmpSalarySlip_Click">Salary Report</asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" ID="IssueLeave" runat="server" OnClick="IssueLeave_Click">Apply For Leave</asp:LinkButton>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                          <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="hello" runat="server" OnClick="hello_Click" ></asp:LinkButton>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" ID="hello" runat="server" OnClick="hello_Click"></asp:LinkButton>
                         </li>
                         <li class="nav-item active">
                             <asp:LinkButton class="nav-link" ID="LogOut" runat="server" OnClick="LogOut_Click">Logout</asp:LinkButton>
@@ -105,7 +121,7 @@
             </asp:ContentPlaceHolder>
         </div>
         <footer>
-          
+
             <div id="footer1" class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

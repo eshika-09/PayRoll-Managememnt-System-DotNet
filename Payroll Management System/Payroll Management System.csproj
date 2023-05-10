@@ -279,10 +279,10 @@
     <Content Include="Datatables\CSS\jquery.dataTables.css" />
     <Content Include="Datatables\JS\jquery.dataTables.js" />
     <Content Include="Default.aspx" />
-    <Content Include="Demo.aspx" />
     <Content Include="EmployeeProfile.aspx" />
     <Content Include="EmpManagement.aspx" />
     <Content Include="EmpDetail.aspx" />
+    <Content Include="EmpSalaryReport.aspx" />
     <Content Include="Emp_Dash.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="FontAwesome\css\all.css" />
@@ -2352,6 +2352,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Admin_Dash.aspx" />
     <Content Include="Images\Approve.png" />
+    <Content Include="Images\Bin.png" />
     <Content Include="Images\Emp_Manage.png" />
     <Content Include="Images\Emp_Report.png" />
     <Content Include="Images\icons8-cash.gif" />
@@ -2365,7 +2366,6 @@
     <Content Include="Images\Salary_Rep.png" />
     <Content Include="LeaveApprove.aspx" />
     <Content Include="LeaveIssue.aspx" />
-    <Content Include="LogOut.aspx" />
     <Content Include="Main_CSS\CustomeStyleSheet.css" />
     <Content Include="meetup\css\bootstrap-theme.css" />
     <Content Include="meetup\css\bootstrap-theme.min.css" />
@@ -2596,13 +2596,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Demo.aspx.cs">
-      <DependentUpon>Demo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Demo.aspx.designer.cs">
-      <DependentUpon>Demo.aspx</DependentUpon>
-    </Compile>
     <Compile Include="EmployeeProfile.aspx.cs">
       <DependentUpon>EmployeeProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2623,6 +2616,13 @@
     </Compile>
     <Compile Include="EmpDetail.aspx.designer.cs">
       <DependentUpon>EmpDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmpSalaryReport.aspx.cs">
+      <DependentUpon>EmpSalaryReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmpSalaryReport.aspx.designer.cs">
+      <DependentUpon>EmpSalaryReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Emp_Dash.aspx.cs">
       <DependentUpon>Emp_Dash.aspx</DependentUpon>
@@ -2661,13 +2661,6 @@
     </Compile>
     <Compile Include="LeaveIssue.aspx.designer.cs">
       <DependentUpon>LeaveIssue.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LogOut.aspx.cs">
-      <DependentUpon>LogOut.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LogOut.aspx.designer.cs">
-      <DependentUpon>LogOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

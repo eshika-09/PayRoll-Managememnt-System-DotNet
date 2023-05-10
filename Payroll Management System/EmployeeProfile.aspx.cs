@@ -20,135 +20,63 @@ namespace Payroll_Management_System
         {
             if (!IsPostBack)
             {
-                BindData();
+                BindDDL();
+                //BindDesignation();
+                //BindBasic_pay();
+            }
+            if (Session["fullname"] != null)
+            {
+                txtname.Text = Session["fullname"].ToString();
+            }
+            if (Session["username"] != null)
+            {
+                txtid.Text = Session["username"].ToString();
+            }
+            if (Session["empclass"] != null)
+            {
+                txtDesig.Text = Session["empclass"].ToString();
             }
         }
-        
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                OracleConnection conn1 = new OracleConnection(conn);
-                if (conn1.State == ConnectionState.Closed)
-                {
-                    conn1.Open();
-                }
-                OracleCommand cmd = new OracleCommand("select full_name,account_status,dob,phone,email,state,city,pincode,address,ctc from EmpManage where empid = '" + txtid.Text.Trim() + "'", conn1);
-                OracleDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    while (dr.Read())
-                    {
-
-                        txtname.Text = dr["full_name"].ToString();
-                        txtdob.Text = dr["dob"].ToString();
-                        txtphone.Text = dr["phone"].ToString();
-                        txtmail.Text = dr["email"].ToString();
-                        ddlstate.Items.Add(dr["state"].ToString());
-                        txtcity.Text = dr["city"].ToString();
-                        txtpin.Text = dr["pincode"].ToString();
-                        txtaddress.Text = dr["address"].ToString();
-                        Response.Write("<script>alert('" + dr.GetValue(0).ToString() + "');</script>");
-                        DataBind();
-
-                        Label1.Text = dr["account_status"].ToString().Trim();
-
-                        if (dr["account_status"].ToString().Trim() == "Active")
-                        {
-                            Label1.Attributes.Add("class", "badge badge-pill badge-success");
-                        }
-                        else if (dr["account_status"].ToString().Trim() == "Pending")
-                        {
-                            Label1.Attributes.Add("class", "badge badge-pill badge-warning");
-                        }
-                        else if (dr["account_status"].ToString().Trim() == "Deactive")
-                        {
-                            Label1.Attributes.Add("class", "badge badge-pill badge-danger");
-                        }
-                        else
-                        {
-                            Label1.Attributes.Add("class", "badge badge-pill badge-info");
-                        }
-                        BindData();
-                    }
-                }
-                else
-                {
-                    Response.Write("<script>alert('Invalid ID');</script>");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            UpdateEmp();
-            clear();
-        }
-
-        void UpdateEmp()
-        {
-            DateTime dob = Convert.ToDateTime(txtdob.Text.ToString()).Date;
-            DateTimeFormatInfo mfi = new DateTimeFormatInfo();
-            string strMonthName = mfi.GetAbbreviatedMonthName(dob.Month);
-            string _dob = dob.Day + "-" + strMonthName + "-" + dob.Year;
-            try
-            {
-                var cmdText = "update EmpManage set full_name =:full_name, dob=:dob, phone=:phone, email=:email, state=:state, city=:city, pincode=:pincode, address=:address where empid='" + txtid.Text.Trim() + "'";
-                using (OracleConnection conn1 = new OracleConnection(conn))
-                using (OracleCommand cmd = new OracleCommand(cmdText, conn1))
-
-                {
-                    cmd.Parameters.AddWithValue("full_name", txtname.Text.Trim());
-                    cmd.Parameters.AddWithValue("dob", _dob);
-                    cmd.Parameters.AddWithValue("phone", txtphone.Text.Trim());
-                    cmd.Parameters.AddWithValue("email", txtmail.Text.Trim());
-                    cmd.Parameters.AddWithValue("state", ddlstate.SelectedItem.Value);
-                    cmd.Parameters.AddWithValue("city", txtcity.Text.Trim());
-                    cmd.Parameters.AddWithValue("pincode", txtpin.Text.Trim());
-                    cmd.Parameters.AddWithValue("address", txtaddress.Text.Trim());
-                    cmd.Connection.Open();
-                    cmd.ExecuteNonQuery();
-                    cmd.Connection.Close();
-                    Response.Write("<script>alert('Employee Updated Successfully');</script>");
-                    BindData();
-                    clear();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        void BindData()
+        void BindDDL()
         {
             OracleConnection conn2 = new OracleConnection(conn);
             if (conn2.State == ConnectionState.Closed)
             {
                 conn2.Open();
             }
-            OracleCommand cmd = new OracleCommand("select * from EmpManage", conn2);
-            OracleDataAdapter da = new OracleDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            OracleCommand cmd2 = new OracleCommand("select dept_name from master_dept", conn2);
+            cmd2.CommandType = CommandType.Text;
+            ddlDept.DataSource = cmd2.ExecuteReader();
+            ddlDept.DataTextField = "dept_name";
+            ddlDept.DataBind();
+            conn2.Close();
         }
-        void clear()
+
+        protected void Apply_Click(object sender, EventArgs e)
         {
-            txtname.Text = "";
-            txtdob.Text = "";
-            txtphone.Text = "";
-            txtmail.Text = "";
-            ddlstate.Text = "";
-            txtcity.Text = "";
-            txtphone.Text = "";
-            txtaddress.Text = "";
-            txtid.Text = "";
+            try
+            {
+                var cmdText = "insert into salarytbl_1(empid,full_name,designation,dept,basic_pay)values(:empid,:full_name,:designation,:dept,:basic_pay)";
+                //var cmdText = "insert into EmpManage(basic_pay)values(:basic_pay)";
+                using (OracleConnection conn1 = new OracleConnection(conn))
+                using (OracleCommand cmd = new OracleCommand(cmdText, conn1))
+
+                {
+                    cmd.Parameters.AddWithValue("empid", txtid.Text.Trim());
+                    cmd.Parameters.AddWithValue("full_name", txtname.Text.Trim());
+                    cmd.Parameters.AddWithValue("designation", txtDesig.Text.Trim());
+                    cmd.Parameters.AddWithValue("dept", ddlDept.Text.Trim());
+                    cmd.Parameters.AddWithValue("basic_pay", txtBasic.Text.Trim());
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+                    Response.Write("<script>alert('Information sent Successfully');</script>");
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+            }
         }
     }
 }

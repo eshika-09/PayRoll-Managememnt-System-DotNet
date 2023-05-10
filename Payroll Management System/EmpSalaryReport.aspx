@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="SalaryReport.aspx.cs" Inherits="Payroll_Management_System.SalaryReport" EnableEventValidation = "false"%>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="EmpSalaryReport.aspx.cs" Inherits="Payroll_Management_System.EmpSalaryReport" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
+     <style>
         .divhide {
             display: none;
         }
@@ -82,8 +81,8 @@
     <div class="row">
         <div class="col-4 mx-auto">
             <br />
-            <asp:Button ID="Generate" class="btn btn-lg btn-block btn-outline-success" runat="server" Text="Generate PDF" OnClick="Generate_Click1" Visible="false" />
-            <asp:Button ID="Excel" class="btn btn-outline-danger btn-block btn-lg" runat="server" Text="Generate Excel" OnClick="Excel_Click" />
+            <asp:Button ID="Generate1" class="btn btn-lg btn-block btn-outline-success" runat="server" Text="Generate PDF" OnClick="Generate1_Click" Visible="false" />
+            <asp:Button ID="Excel1" class="btn btn-outline-danger btn-block btn-lg" runat="server" Text="Generate Excel" OnClick="Excel1_Click"/>
             <br />
         </div>
        <%-- <div class="col-4 mx-auto">

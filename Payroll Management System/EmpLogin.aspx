@@ -21,11 +21,21 @@
             margin: 0;
             box-sizing: border-box;
         }
-
-        body {
+        /*body {
             background-color: #ffffff;
+        }*/
+        body{
+             width: 100vx;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(153,0,65);
+background: linear-gradient(90deg, rgba(153,0,65,0.8687850140056023) 0%, rgba(153,153,153,0.9528186274509804) 35%, rgba(255,255,255,0.7875525210084033) 100%);
         }
-
+        .nav-bar {
+            display:none;
+        }
         .container {
             width: 430px;
             height: 700px;
@@ -35,26 +45,22 @@
             top: 75%;
             display: flex;
         }
-
             .container .shape {
                 height: 200px;
                 width: 200px;
                 position: absolute;
                 border-radius: 50%;
             }
-
         .shape:first-child {
             background: linear-gradient( #a50034, #d43768 );
             left: -80px;
             top: -300px;
         }
-
         .shape:last-child {
             background: linear-gradient(#6b6b6b,#b5b3b3);
             right: -72px;
             bottom: 150px;
         }
-
         .card {
             height: 650px;
             width: 400px;
@@ -70,7 +76,6 @@
             padding: 50px 35px;
             z-index: 999999;
         }
-
         form * {
             font-family: 'Poppins',sans-serif;
             color: black;
@@ -78,48 +83,41 @@
             outline: none;
             border: none;
         }
-
         form h3 {
             font-size: 32px;
             font-weight: 500;
             line-height: 42px;
             text-align: center;
         }
-
         label {
             display: block;
             margin-top: 30px;
             font-size: 16px;
             font-weight: 500;
         }
-
         .input-group-append {
             display: flex;
             margin-top: 7px
         }
-
         .form-control {
             display: block;
             height: 50px;
             width: 100%;
-            background-color: rgba(255,255,255,0.07);
+            background-color: rgba(255,255,255,0.50);
             border-radius: 3px;
             padding: 0 10px;
             margin-top: 8px;
             font-size: 14px;
             font-weight: 300;
         }
-
         ::placeholder {
             /* color: #e5e5e5;*/
             color: azure;
         }
-
         .social {
             margin-top: 30px;
             display: flex;
         }
-
             .social div {
                 background: red;
                 width: 150px;
@@ -139,15 +137,12 @@
                 .social div:hover {
                     background-color: rgba(255,255,255,0.47);
                 }
-
             .social .fb {
                 margin-left: 25px;
             }
-
             .social i {
                 margin-right: 4px;
             }
-
         a:hover {
             text-decoration: underline;
             color: #6b6b6b;
@@ -198,17 +193,17 @@
                                 </div>
                                 <br />
                                 <div class="form-group">
-                                    <asp:Button class="btn btn-success btn-block btn-lg" ID="Button1" runat="server" Text="Login" OnClick="Button1_Click" />
+                                   <asp:Button ID="Button1" runat="server" class="btn btn-outline-danger btn-block btn-lg" Text="LOGIN" OnClick="LoginBtn_Click" />
                                 </div>
                                 <div class="form-group">
                                     <a href="SignUp.aspx">
-                                        <input class="btn btn-info btn-block btn-lg" id="Button2" type="button" value="Sign Up" /></a>
+                                        <input class="btn btn-outline-secondary btn-block btn-lg" id="Button2" type="button" value="Sign Up" /></a>
                                 </div>
+                                <a href="AdminLogin.aspx"><< Admin Account?</a><br>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a href="HomePage.aspx"><< Back to Home</a><br>
                 <br>
             </div>
         </div>

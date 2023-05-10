@@ -33,15 +33,6 @@ namespace Payroll_Management_System
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ViewReq control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ViewReq;
-
-        /// <summary>
         /// UserLogin control.
         /// </summary>
         /// <remarks>
@@ -60,6 +51,24 @@ namespace Payroll_Management_System
         protected global::System.Web.UI.WebControls.LinkButton EmpSignUp;
 
         /// <summary>
+        /// dashboard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton dashboard;
+
+        /// <summary>
+        /// dashboard1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton dashboard1;
+
+        /// <summary>
         /// AdminLogin control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace Payroll_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton AdminLogin;
+
+        /// <summary>
+        /// ViewReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ViewReq;
 
         /// <summary>
         /// AdminSignUp control.
@@ -94,6 +112,15 @@ namespace Payroll_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton SalarySlip;
+
+        /// <summary>
+        /// EmpSalarySlip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton EmpSalarySlip;
 
         /// <summary>
         /// IssueLeave control.

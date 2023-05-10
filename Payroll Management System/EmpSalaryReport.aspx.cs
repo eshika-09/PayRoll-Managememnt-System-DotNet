@@ -15,14 +15,13 @@ using iTextSharp.tool.xml;
 using iTextSharp.text.html.simpleparser;
 using Excel = Microsoft.Office.Interop.Excel;
 
+
 namespace Payroll_Management_System
 {
     [Obsolete]
-    public partial class SalaryReport : System.Web.UI.Page
+    public partial class EmpSalaryReport : System.Web.UI.Page
     {
         string conn = ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             BindData();
@@ -35,7 +34,7 @@ namespace Payroll_Management_System
             {
                 conn2.Open();
             }
-            OracleCommand cmd = new OracleCommand("select * from salarytbl_1", conn2);
+            OracleCommand cmd = new OracleCommand("select * from salarytbl_1 where empid = '" + Session["username"].ToString() + "'", conn2);
             OracleDataAdapter da = new OracleDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -64,7 +63,7 @@ namespace Payroll_Management_System
             Response.Write(pdfDoc);
             Response.End();
         }
-        protected void Generate_Click1(object sender, EventArgs e)
+        protected void Generate1_Click(object sender, EventArgs e)
         {
             string _empID = Convert.ToString(Session["emp_ID"]);
             PrintPDF(_empID);
@@ -81,7 +80,7 @@ namespace Payroll_Management_System
                 }
                 //OracleCommand cmd = new OracleCommand("select full_name,dept,designation,basic_pay,hra,pf,ma,da,food,leaves,earnings,deduction,NetSalary from salarytbl_1 where empid='"+id.Text.Trim()+"'", conn1);
 
-                OracleCommand cmd = new OracleCommand("select full_name,dept,designation,basic_pay,hra,pf,ma,da,food,leaves,earnings,deduction,NetSalary from salarytbl_1", conn1);
+                OracleCommand cmd = new OracleCommand("select full_name,dept,designation,basic_pay,hra,pf,ma,da,food,leaves,earnings,deduction,NetSalary from salarytbl_1 where empid='" + emp_id + "'", conn1);
 
                 OracleDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows)
@@ -112,6 +111,10 @@ namespace Payroll_Management_System
                 throw ex;
             }
         }
+        protected void Excel1_Click(object sender, EventArgs e)
+        {
+            ExportGridToExcel();
+        }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -129,36 +132,6 @@ namespace Payroll_Management_System
                 throw ex;
             }
         }
-
-        protected void Excel_Click(object sender, EventArgs e)
-        {
-            ExportGridToExcel();
-        }
-        //public override void VerifyRenderingInServerForm(Control control)
-        //{
-        //    //required to avoid the runtime error "  
-        //    //Control 'GridView1' of type 'GridView' must be placed inside a form tag with runat=server."  
-        //}
-        //public void ExportGridToExcel()
-        //{
-        //    Response.Clear();
-        //    Response.Buffer = true;
-        //    Response.ClearContent();
-        //    Response.ClearHeaders();
-        //    Response.Charset = "";
-        //    string FileName = "SalarySlip" + DateTime.Now + ".xls";
-        //    StringWriter strwriter = new StringWriter();
-        //    HtmlTextWriter htmltextwriter = new HtmlTextWriter(strwriter);
-        //    Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        //    Response.ContentType = "application/vnd.ms-excel";
-        //    Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
-        //    GridView1.GridLines = GridLines.Both;
-        //    GridView1.HeaderStyle.Font.Bold = true;
-        //    GridView1.RenderControl(htmltextwriter);
-        //    Response.Write(strwriter.ToString());
-        //    Response.End();
-
-        //}
         public void ExportGridToExcel()
         {
             Response.Clear();

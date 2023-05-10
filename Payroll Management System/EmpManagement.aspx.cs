@@ -18,15 +18,15 @@ namespace Payroll_Management_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 BindData();
+
             }
         }
 
-        [Obsolete]
-       
-        protected void Button4_Click(object sender, EventArgs e)
+            protected void Button4_Click(object sender, EventArgs e)
         {
             if (CheckMemeberExist())
             {
@@ -35,7 +35,7 @@ namespace Payroll_Management_System
             }
             else
             {
-                Response.Write("<script>alert('Memeber already Exist, Can Not Add More!!');</script>");
+                Response.Write("<script>('Memeber already Exist, Can Not Add More!!');</script>");
             }
         }
 
@@ -52,35 +52,44 @@ namespace Payroll_Management_System
                     conn1.Open();
                 }
                
-                OracleCommand cmd = new OracleCommand("select full_name,account_status,dob,phone,email,state,city,pincode,address,ctc from EmpManage where empid = '" + txtid.Text.Trim() + "'", conn1);
+                OracleCommand cmd = new OracleCommand("select full_name,account_status,dob,phone,email,state,city,pincode,address from signup where empid = '" + txtid.Text.Trim() + "'", conn1);
                 OracleDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows)
                 {
                     while (dr.Read())
                     {
-                        //DateTime dob = Convert.ToDateTime(txtdob.Text.ToString()).Date;
-                        //DateTimeFormatInfo mfi = new DateTimeFormatInfo();
-                        //string strMonthName = mfi.GetAbbreviatedMonthName(dob.Month);
-                        //string _dob = dob.Day + "-" + strMonthName + "-" + dob.Year;
+                        DateTime dob = Convert.ToDateTime(txtdob.Text.ToString()).Date;
+                        DateTimeFormatInfo mfi = new DateTimeFormatInfo();
+                        string strMonthName = mfi.GetAbbreviatedMonthName(dob.Month);
+                        string _dob = dob.Day + "-" + strMonthName + "-" + dob.Year;
 
                         txtname.Text = dr["full_name"].ToString();
                         txtstatus.Text = dr["account_status"].ToString();
                         txtdob.Text = dr["dob"].ToString();
                         txtphone.Text = dr["phone"].ToString();
                         txtmail.Text = dr["email"].ToString();
-                        txtstatus.Text = dr["state"].ToString();
+                        txtstate.Text = dr["state"].ToString();
                         txtcity.Text = dr["city"].ToString();
                         txtpin.Text = dr["pincode"].ToString();
                         txtaddress.Text = dr["address"].ToString();
-                        //TextBox5.Text = dr["ctc"].ToString();
                         Response.Write("<script>alert('" + dr.GetValue(0).ToString() + "');</script>");
                         DataBind();
                         BindData();
+                        txtname.ReadOnly = false;
+                        txtstatus.ReadOnly = false;
+                        txtdob.ReadOnly = false;
+                        txtphone.ReadOnly = false;
+                        txtmail.ReadOnly = false;
+                        txtstate.ReadOnly = false;
+                        txtcity.ReadOnly = false;
+                        txtpin.ReadOnly = false;
+                        txtaddress.ReadOnly = false;
                     }
                 }
                 else
                 {
-                    Response.Write("<script>alert('Invalid ID');</script>");
+                    //    Response.Write("<script>alert('Invalid ID');</script>");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "popup", "alert('Hello! This is an alert popup.');", true);
                 }
             }
             catch (Exception ex)
@@ -99,7 +108,7 @@ namespace Payroll_Management_System
                     conn2.Open();
                 }
                
-                OracleCommand cmd2 = new OracleCommand("select * from EmpManage where empid = '" + txtid.Text.Trim() + "'", conn2);
+                OracleCommand cmd2 = new OracleCommand("select * from signup where empid = '" + txtid.Text.Trim() + "'", conn2);
                 OracleDataAdapter da = new OracleDataAdapter(cmd2);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -150,7 +159,7 @@ namespace Payroll_Management_System
                 conn2.Open();
             }
            
-            OracleCommand cmd = new OracleCommand("select * from EmpManage", conn2);
+            OracleCommand cmd = new OracleCommand("select empid,full_name,account_status,dob,phone,email,state,city,pincode,address from signup", conn2);
             OracleDataAdapter da = new OracleDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -184,7 +193,7 @@ namespace Payroll_Management_System
                     conn3.Open();
                 }
               
-                OracleCommand cmd1 = new OracleCommand("update EmpManage set account_status ='Active' where empid='" + txtid.Text.Trim() + "'", conn3);
+                OracleCommand cmd1 = new OracleCommand("update signup set account_status ='Active' where empid='" + txtid.Text.Trim() + "'", conn3);
                 cmd1.ExecuteNonQuery();
                 cmd1.Connection.Close();
                 Response.Write("<script>alert('Status Updated Successfully');</script>");
@@ -213,7 +222,7 @@ namespace Payroll_Management_System
                     conn3.Open();
                 }
                 
-                OracleCommand cmd1 = new OracleCommand("update EmpManage set account_status ='Pending' where empid='" + txtid.Text.Trim() + "'", conn3);
+                OracleCommand cmd1 = new OracleCommand("update signup set account_status ='Pending' where empid='" + txtid.Text.Trim() + "'", conn3);
                 cmd1.ExecuteNonQuery();
                 cmd1.Connection.Close();
                 Response.Write("<script>alert('Status Updated Successfully');</script>");
@@ -241,7 +250,7 @@ namespace Payroll_Management_System
                     conn3.Open();
                 }
               
-                OracleCommand cmd1 = new OracleCommand("update EmpManage set account_status ='Deactive' where empid='" + txtid.Text.Trim() + "'", conn3);
+                OracleCommand cmd1 = new OracleCommand("update signup set account_status ='Deactive' where empid='" + txtid.Text.Trim() + "'", conn3);
                 cmd1.ExecuteNonQuery();
                 cmd1.Connection.Close();
                 Response.Write("<script>alert('Status Updated Successfully');</script>");
@@ -257,33 +266,59 @@ namespace Payroll_Management_System
             }
             BindData();
         }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            if (CheckMemeberExist())
+            {
+                UpdateEmp();
+                BindData();
+            }
+            else
+            {
+                Response.Write("<script>alert('Memeber already Exist, Can Not Update!!');</script>");
+            }
+        }
+
+        void UpdateEmp()
+        {
+            DateTime dob = Convert.ToDateTime(txtdob.Text.ToString()).Date;
+            DateTimeFormatInfo mfi = new DateTimeFormatInfo();
+            string strMonthName = mfi.GetAbbreviatedMonthName(dob.Month);
+            string _dob = dob.Day + "-" + strMonthName + "-" + dob.Year;
+            try
+            {
+                var cmdText = "update signup set full_name = :full_name, account_status=:account_status, dob=:dob, phone=:phone, email=:email, state=:state, city=:city, pincode=:pincode, address=:address where empid='" + txtid.Text.Trim() + "'";
+                using (OracleConnection conn1 = new OracleConnection(conn))
+                using (OracleCommand cmd = new OracleCommand(cmdText, conn1))
+
+                {
+                    cmd.Parameters.AddWithValue("full_name", txtname.Text.Trim());
+                    cmd.Parameters.AddWithValue("account_status", txtstatus.Text.Trim());
+                    cmd.Parameters.AddWithValue("dob", _dob);
+                    cmd.Parameters.AddWithValue("phone", txtphone.Text.Trim());
+                    cmd.Parameters.AddWithValue("email", txtmail.Text.Trim());
+                    cmd.Parameters.AddWithValue("state", txtstate.Text.Trim());
+                    cmd.Parameters.AddWithValue("city", txtcity.Text.Trim());
+                    cmd.Parameters.AddWithValue("pincode", txtpin.Text.Trim());
+                    cmd.Parameters.AddWithValue("address", txtaddress.Text.Trim());
+                   // cmd.Parameters.AddWithValue("ctc", TextBox5.Text.Trim());
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+                    Response.Write("<script>alert('Employee Updated Successfully');</script>");
+                    DataBind();
+                    clearForm();
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+            }
+        }
+
     }
 }
-//protected void Button2_Click(object sender, EventArgs e)
-//{
-//    if (CheckMemeberExist())
-//    {
-//        Response.Write("<script>alert('Memeber already Exist, Can Not Add More!!');</script>");
-//    }
-//    else
-//    {
-//        AddNewEmp();
-//        BindData();
-//    }
-//}
-//protected void Button3_Click(object sender, EventArgs e)
-//{
-//    if (CheckMemeberExist())
-//    {
-//        UpdateEmp();
-//        BindData();
-//    }
-//    else
-//    {
-//        Response.Write("<script>alert('Memeber already Exist, Can Not Update!!');</script>");
-//    }
-//}
-
 
 //void AddNewEmp()
 //{
@@ -323,39 +358,3 @@ namespace Payroll_Management_System
 //}
 
 
-//void UpdateEmp()
-//{
-//    DateTime dob = Convert.ToDateTime(TextBox8.Text.ToString()).Date;
-//    DateTimeFormatInfo mfi = new DateTimeFormatInfo();
-//    string strMonthName = mfi.GetAbbreviatedMonthName(dob.Month);
-//    string _dob = dob.Day + "-" + strMonthName + "-" + dob.Year;
-//    try
-//    {
-//        var cmdText = "update EmpManage set full_name = :full_name, account_status=:account_status, dob=:dob, phone=:phone, email=:email, state=:state, city=:city, pincode=:pincode, address=:address, ctc=:ctc where empid='" + TextBox1.Text.Trim() + "'";
-//        using (OracleConnection conn1 = new OracleConnection(conn))
-//        using (OracleCommand cmd = new OracleCommand(cmdText, conn1))
-
-//        {
-//            cmd.Parameters.AddWithValue("full_name", TextBox2.Text.Trim());
-//            cmd.Parameters.AddWithValue("account_status", TextBox7.Text.Trim());
-//            cmd.Parameters.AddWithValue("dob", _dob);
-//            cmd.Parameters.AddWithValue("phone", TextBox3.Text.Trim());
-//            cmd.Parameters.AddWithValue("email", TextBox4.Text.Trim());
-//            cmd.Parameters.AddWithValue("state", TextBox9.Text.Trim());
-//            cmd.Parameters.AddWithValue("city", TextBox10.Text.Trim());
-//            cmd.Parameters.AddWithValue("pincode", TextBox11.Text.Trim());
-//            cmd.Parameters.AddWithValue("address", TextBox6.Text.Trim());
-//            cmd.Parameters.AddWithValue("ctc", TextBox5.Text.Trim());
-//            cmd.Connection.Open();
-//            cmd.ExecuteNonQuery();
-//            cmd.Connection.Close();
-//            Response.Write("<script>alert('Employee Updated Successfully');</script>");
-//            DataBind();
-//            clearForm();
-//        }
-//    }
-//    catch (Exception ex)
-//    {
-//        Response.Write("<script>alert('" + ex.Message + "');</script>");
-//    }
-//}

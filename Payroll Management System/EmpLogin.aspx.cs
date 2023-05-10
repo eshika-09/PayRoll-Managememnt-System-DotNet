@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.OracleClient;
@@ -11,16 +12,16 @@ using System.Globalization;
 
 namespace Payroll_Management_System
 {
+    [Obsolete]
     public partial class UserLogin : System.Web.UI.Page
     {
         string conn = ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
-        [Obsolete]
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void LoginBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -29,11 +30,11 @@ namespace Payroll_Management_System
                 {
                     conn1.Open();
                 }
-                OracleCommand cmd = new OracleCommand("select * from signup where empid = '" + txtid.Text.Trim() + "' and pass = '"+ txtpass.Text.Trim()+"'", conn1);
+                OracleCommand cmd = new OracleCommand("select * from signup where empid = '" + txtid.Text.Trim() + "' and pass = '" + txtpass.Text.Trim() + "'", conn1);
                 OracleDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows)
                 {
-                    while (dr.Read()) 
+                    while (dr.Read())
                     {
                         Response.Write("<script>alert('" + dr.GetValue(8).ToString() + "');</script>");
 
@@ -41,17 +42,17 @@ namespace Payroll_Management_System
                         Session["fullname"] = dr.GetValue(0).ToString();
                         Session["role"] = "User";
                         Session["status"] = dr.GetValue(11).ToString();
-
+                        Session["dob"] = dr.GetValue(1).ToString();
+                        Session["empclass"] = dr.GetValue(10).ToString();
                     }
                     Response.Redirect("Emp_Dash.aspx");
-                    
                 }
                 else
                 {
                     Response.Write("<script>alert('Invalid credentials');</script>");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }

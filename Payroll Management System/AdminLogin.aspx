@@ -22,6 +22,20 @@
             box-sizing: border-box;
         }
 
+        body {
+            width: 100vx;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(153,0,65);
+            background: linear-gradient(90deg, rgba(153,0,65,0.8687850140056023) 0%, rgba(153,153,153,0.9528186274509804) 35%, rgba(255,255,255,0.7875525210084033) 100%);
+        }
+
+        .nav-bar {
+            display:none;
+        }
+
         .container {
             width: 430px;
             height: 700px;
@@ -98,7 +112,7 @@
             display: block;
             height: 50px;
             width: 100%;
-            background-color: rgba(255,255,255,0.07);
+            background-color: rgba(255,255,255,0.50);
             border-radius: 3px;
             padding: 0 10px;
             margin-top: 8px;
@@ -122,19 +136,22 @@
                 border-radius: 3px;
                 padding: 5px 10px 10px 5px;
                 background-color: rgba(255,255,255,0.27);
-                background-color:#8c8888;
+                background-color: #8c8888;
                 color: #eaf0fb;
                 text-align: center;
             }
+
             .social .go a {
-                color:#f2f2f2;
+                color: #f2f2f2;
             }
+
                 .social .go a:active, .social .go a:focus {
-                    color:#f2f2f2;
+                    color: #f2f2f2;
                 }
-                .social div:hover {
-                    background-color: rgba(255,255,255,0.47);
-                }
+
+            .social div:hover {
+                background-color: rgba(255,255,255,0.47);
+            }
 
             .social .fb {
                 margin-left: 25px;
@@ -194,14 +211,14 @@
                                 </div>
                                 <br />
                                 <div class="form-group">
-                                    <asp:Button ID="Button1" class="btn btn-success btn-block btn-lg" runat="server" Text="Login" OnClick="Button1_Click" ValidationGroup="Submit" />
+                                    <asp:Button ID="Button1" class="btn btn-outline-danger btn-block btn-lg" runat="server" Text="Login" OnClick="Button1_Click" ValidationGroup="Submit" />
                                 </div>
                                 <div class="social">
-                                    <div class="go"><a href="AdminLogin.aspx" ><i class="fa fa-user-shield text-danger mr-2"></i>Admin</a></div>
+                                    <div class="go"><a href="AdminLogin.aspx"><i class="fa fa-user-shield text-danger mr-2"></i>Admin</a></div>
                                     <div class="fb"><a href="EmpLogin.aspx"><i class="fa fa-user-shield"></i>Employee</a></div>
                                 </div>
                                 <br />
-                                <a href="AdminSignUp.aspx"><< Back to Home</a>
+                                <a href="AdminSignUp.aspx"><< Don't have an account</a>
 
                             </div>
                         </div>
