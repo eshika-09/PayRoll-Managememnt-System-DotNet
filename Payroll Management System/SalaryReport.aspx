@@ -63,16 +63,16 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
-                <EditRowStyle BackColor="#999999" />
-                <FooterStyle BackColor="#990033" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#990033" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#999999" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#999999" ForeColor="#333333" />
-                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+               <EditRowStyle BackColor="#999999" />
+                            <FooterStyle BackColor="#990033" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#990033 " Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#999999" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#999999" ForeColor="#000000" />
+                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
        </div>
                         </div>
@@ -86,13 +86,6 @@
             <asp:Button ID="Excel" class="btn btn-outline-danger btn-block btn-lg" runat="server" Text="Generate Excel" OnClick="Excel_Click" />
             <br />
         </div>
-       <%-- <div class="col-4 mx-auto">
-            <br /> 
-            <asp:Label CssClass="form-control" ID="Eid" runat="server" Text="Employee ID"></asp:Label>
-            <br />
-            <asp:TextBox CssClass="form-control" ID="id" runat="server"></asp:TextBox>
-            <br />
-        </div>--%>
     </div>
     <div id="divPrintPDFContent" runat="server" class="divhide">
         <table border="1">

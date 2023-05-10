@@ -143,7 +143,6 @@ namespace Payroll_Management_System
             txtphone.Text = "";
             txtdob.Text = "";
             txtmail.Text = "";
-            //ddlstate.SelectedValue = "";
             txtcity.Text = "";
             txtpin.Text = "";
             txtaddress.Text = "";

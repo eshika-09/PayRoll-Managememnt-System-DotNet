@@ -5,11 +5,6 @@
             $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
         });
     </script>
-    <style>
-        .card-body{
-            
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div class="container-fluid">
@@ -68,7 +63,7 @@
                      <div class="col-md-3">
                         <label>DOB</label>
                         <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="txtdob" TextMode="Date" runat="server" placeholder="DOB" ReadOnly="false" ></asp:TextBox>
+                           <asp:TextBox CssClass="form-control" ID="txtdob" runat="server" placeholder="DOB" ReadOnly="true" ></asp:TextBox>
                         </div>
                      </div>
                      <div class="col-md-4">
@@ -128,7 +123,6 @@
                         </div>
                </div>
             </div>
-            <a href="HomePage.aspx"><< Back to Home</a><br>
             <br>
          </div>
          <div class="col-md-7">

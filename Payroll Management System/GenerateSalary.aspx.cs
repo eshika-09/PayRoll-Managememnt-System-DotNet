@@ -19,7 +19,8 @@ namespace Payroll_Management_System
         {
             if (!IsPostBack)
             {
-
+                DataBind();
+                BindData();
             }
         }
         protected void LinkButton4_Click(object sender, EventArgs e)
@@ -43,12 +44,15 @@ namespace Payroll_Management_System
                         DropDownList1.Text = dr["dept"].ToString();
                         TextBox5.Text = dr["basic_pay"].ToString();
                         Response.Write("<script>alert('" + dr.GetValue(1).ToString() + "');</script>");
-                        DataBind(); 
+                        HideDiv.Visible = true;
+                        DataBind();
+                        BindData();
                     }
                 }
                 else
                 {
-                    Response.Write("<script>alert('Invalid ID');</script>");
+                    //Response.Write("<script>alert('Invalid ID');</script>");
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "Title", "alert('Invalid ID ');", true);
                 }
             }
             catch (Exception ex)
@@ -60,9 +64,7 @@ namespace Payroll_Management_System
         protected void Generate_Click(object sender, EventArgs e)
         {
             GenerateSalaryMethod();
-            BindData();
         }
-
 
         void GenerateSalaryMethod()
         {
@@ -127,7 +129,7 @@ namespace Payroll_Management_System
                 {
                     conn1.Open();
                 }
-                var cmdText = "update salarytbl_1 set month = :month, year = :year, SDay = :SDay, hra = :hra, da = :da, ta = :ta, ma = :ma, pf = :pf, food = :food, leaves = :leaves, earnings = :earnings, deduction = :deduction, NetSalary = :NetSalary, createdby=:createdby where empid='"+TextBox1.Text.Trim()+"'";
+                var cmdText = "update salarytbl_1 set month = :month, year = :year, SDay = :SDay, hra = :hra, da = :da, ta = :ta, ma = :ma, pf = :pf, food = :food, leaves = :leaves, earnings = :earnings, deduction = :deduction, NetSalary = :NetSalary, createdby=:createdby where empid='" + TextBox1.Text.Trim() + "'";
                 //var cmdText = "update salarytbl_1 set month = @month where empid=" + TextBox1.Text.Trim() + "";
 
                 using (OracleConnection conn2 = new OracleConnection(conn))
@@ -150,11 +152,10 @@ namespace Payroll_Management_System
                         cmd.Parameters.AddWithValue("createdby", "Higher Authority");
                         conn2.Open();
                         cmd.ExecuteNonQuery();
-                        BindData();
-                        clearform();
                         Response.Write("<script>alert('Salary Genererated Successfully');</script>");
+                        DataBind();
+                        BindData();
                         conn2.Close();
-
                     }
                 }
             }
@@ -193,7 +194,6 @@ namespace Payroll_Management_System
                         TextBox15.Text = dr["earnings"].ToString();
                         TextBox16.Text = dr["deduction"].ToString();
                         TextBox17.Text = dr["NetSalary"].ToString();
-                        clearform();
                     }
                 }
                 else
@@ -205,26 +205,6 @@ namespace Payroll_Management_System
             {
                 throw ex;
             }
-        }
-
-        void clearform()
-        {
-            DropDownList2.SelectedValue = "";
-            TextBox4.Text = "";
-            TextBox1.Text = "";
-            TextBox2.Text = "";
-            TextBox3.Text = "";
-            TextBox7.Text = "";
-            TextBox8.Text = "";
-            TextBox9.Text = "";
-            TextBox11.Text = "";
-            TextBox10.Text = "";
-            TextBox12.Text = "";
-            TextBox13.Text = "";
-            TextBox14.Text = "";
-            TextBox15.Text = "";
-            TextBox16.Text = "";
-            TextBox17.Text = "";
         }
     }
 }

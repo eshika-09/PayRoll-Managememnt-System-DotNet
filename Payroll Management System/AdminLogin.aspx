@@ -118,6 +118,18 @@
             margin-top: 8px;
             font-size: 14px;
             font-weight: 300;
+        }  
+        .form-control1 {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255,255,255,0.50);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+            text-transform: uppercase;
         }
 
         ::placeholder {
@@ -197,7 +209,7 @@
                             <div class="col">
                                 <label>Admin ID</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="txtid" runat="server" placeholder="Admin ID"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control1" ID="txtid" runat="server" placeholder="Admin ID"></asp:TextBox>
                                     <%-- <asp:RegularExpressionValidator ID="IDValid" runat="server" ControlToValidate="txtid" ErrorMessage="Invalid ID" ForeColor="Red" ValidationExpression="^(?!ADMIN|root|superuser)" ValidationGroup="Submit"></asp:RegularExpressionValidator>--%>
                                 </div>
                                 <label>Password</label>

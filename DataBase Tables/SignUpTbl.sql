@@ -1,3 +1,4 @@
+
 --CREATING THE SIGNUP TABLE--
 
 create table signup(
@@ -8,7 +9,7 @@ email varchar2(100),
 state varchar2(20),
 city varchar2(20),
 pincode number(6,0),
-address varchar2(255),
+address varchar2(255),  
 empid varchar2(30) not null,
 pass varchar2(10) null,
 empclass varchar2(10),
@@ -19,15 +20,12 @@ constraint empid_pk primary key (empid));
 --------------------------------------------------------
 --APPLICATION QUERY--
 
-select * from signup;
-select * from adminsignup
+select * from signup order by empid asc for update;
+select * from adminsignup;
 
 select full_name,account_status,dob,phone,email,state,city,pincode,address from signup
 --create table signup1 as  select * from signup;
 --select * from signup1 where empid= 5 --for update
-Aman221001
-
-select * from v$session;
 
 --SIGNUP SEQUENCE--
 CREATE SEQUENCE signup_seq
@@ -37,7 +35,7 @@ CREATE SEQUENCE signup_seq
  NOCACHE
  NOCYCLE;
 
-
+--drop sequence signup_seq
 --drop table signup
 
 --------------------------------------------------------
@@ -65,10 +63,9 @@ constraint adminid_pk primary key (adminid));
 --------------------------------------------------------
 --------------------------------------------------------
 
-select * from signup;
 
 --APPLICATION QUERY--
-select * from adminsignup order by full_name,dob,phone,email,state,city,pincode,address,pass,empclass desc;
+select * from adminsignup order by adminid asc;
 
 select 'ADMIN'||admin_seq.nextval ADMIN_ID from master_dept;
 
@@ -87,17 +84,6 @@ insert into adminsignup(full_name,dob,phone,email,state,city,pincode,address,adm
 'Shimla',608703,'Full Address','ADMIN1002',12345678,'GA');
 
 --drop table adminsignup
+--drop sequence admin_seq           
 
-
-
-
-
-
-
-
-
-class="btn btn-outline-secondary btn-block btn-lg"
-
-            
-
-
+alter table signup modify(empclass varchar2(50));

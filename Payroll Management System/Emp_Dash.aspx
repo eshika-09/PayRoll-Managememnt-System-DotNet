@@ -139,7 +139,7 @@
         <div class="ag-format-container">
             <div class="ag-courses_box">
                 <div class="ag-courses_item">
-                    <a href="EmployeeProfile.aspx" class="ag-courses-item_link">
+                    <a href="SalaryUpdate.aspx" class="ag-courses-item_link">
                         <div class="ag-courses-item_bg"></div>
 
                         <div class="ag-courses-item_title">
@@ -147,8 +147,7 @@
                         </div>
 
                         <div class="ag-courses-item_date-box">
-                            Start:
-          <span class="ag-courses-item_date">04.11.2022
+          <span class="ag-courses-item_date">Click to Enter
           </span>
                         </div>
                     </a>
@@ -162,9 +161,8 @@
                             Apply For Leave
                         </div>
 
-                        <div class="ag-courses-item_date-box">
-                            Start:
-          <span class="ag-courses-item_date">04.11.2022
+                       <div class="ag-courses-item_date-box">
+          <span class="ag-courses-item_date">Click to Enter
           </span>
                         </div>
                     </a>
@@ -177,9 +175,8 @@
                             Salary Report
                         </div>
 
-                        <div class="ag-courses-item_date-box">
-                            Start:
-          <span class="ag-courses-item_date">04.11.2022
+                       <div class="ag-courses-item_date-box">
+          <span class="ag-courses-item_date">Click to Enter
           </span>
                         </div>
                     </a>

@@ -1,5 +1,0 @@
-create table usertbl(
-empid int not null,
-password varchar2(10) null);
-
-select * from usertbl;

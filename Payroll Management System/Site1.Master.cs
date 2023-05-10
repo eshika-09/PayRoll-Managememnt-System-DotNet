@@ -57,11 +57,12 @@ namespace Payroll_Management_System
                     ViewReq.Visible = false;
                     AdminLogin.Visible = false;
                     EmpManage.Visible = false;
-                    SalarySlip.Visible = true;
+                    SalarySlip.Visible = false;
                     IssueLeave.Visible = true;
                     dashboard.Visible = false;
                     dashboard1.Visible = true;
                     EmpSalarySlip.Visible = true;
+                    
                 }
             }
             catch (Exception)
@@ -88,12 +89,12 @@ namespace Payroll_Management_System
 
         protected void LogOut_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AdminLogin.aspx");
+            Response.Redirect("HomePage.aspx");
         }
 
         protected void hello_Click(object sender, EventArgs e)
         {
-            Response.Redirect("EmployeeProfile.aspx");
+            Response.Redirect("EmpProfile.aspx");
         }
 
         protected void AdminLogin_Click(object sender, EventArgs e)

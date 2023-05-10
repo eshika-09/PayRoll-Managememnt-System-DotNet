@@ -5,6 +5,10 @@
         .ag-format-container {
             width: 1142px;
             margin: 0 auto;
+        } 
+        .ag-format-container-1 {
+            width: 1142px;
+            margin-left: 550px;
         }
 
         .ag-courses_box {
@@ -156,8 +160,7 @@
                         </div>
 
                         <div class="ag-courses-item_date-box">
-                            Start:
-          <span class="ag-courses-item_date">04.11.2022
+          <span class="ag-courses-item_date">Click to Enter
           </span>
                         </div>
                     </a>
@@ -172,8 +175,7 @@
                         </div>
 
                         <div class="ag-courses-item_date-box">
-                            Start:
-          <span class="ag-courses-item_date">04.11.2022
+          <span class="ag-courses-item_date">Click to Enter
           </span>
                         </div>
                     </a>
@@ -187,15 +189,14 @@
                         </div>
 
                         <div class="ag-courses-item_date-box">
-                            Start:
-          <span class="ag-courses-item_date">04.11.2022
+          <span class="ag-courses-item_date">Click to Enter
           </span>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="ag-format-container">
+        <div class="ag-format-container-1">
             <div class="ag-courses_box">
                 <div class="ag-courses_item">
                     <a href="GenerateSalary.aspx" class="ag-courses-item_link">
@@ -206,8 +207,8 @@
                         </div>
 
                         <div class="ag-courses-item_date-box">
-                            Start:
-          <span class="ag-courses-item_date">04.11.2022
+                            
+          <span class="ag-courses-item_date">Click to Enter
           </span>
                         </div>
                     </a>
@@ -222,8 +223,7 @@
                         </div>
 
                         <div class="ag-courses-item_date-box">
-                            Start:
-          <span class="ag-courses-item_date">04.11.2022
+          <span class="ag-courses-item_date">Click to Enter
           </span>
                         </div>
                     </a>

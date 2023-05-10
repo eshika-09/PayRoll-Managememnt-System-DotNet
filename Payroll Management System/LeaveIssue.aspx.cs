@@ -98,7 +98,6 @@ namespace Payroll_Management_System
             txtReason.Text = "";
             txtstrt.Text = "";
             txtend.Text = "";
-            TtlLeave.Text = "";
 
         }
         protected void txtstrt_TextChanged(object sender, EventArgs e)
@@ -142,7 +141,7 @@ namespace Payroll_Management_System
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Cells[1].Visible = false;
+            e.Row.Cells[2].Visible = true;
             
                 int sum = 0;
                 for (int i = 0; i < GridView1.Rows.Count; i++)
@@ -152,12 +151,10 @@ namespace Payroll_Management_System
                 TtlLeave.Text = sum.ToString();
             
         }
-
         protected void btnItemLink_Click(object sender, EventArgs e)
         {
             try
             {
-
                 OracleConnection conn2 = new OracleConnection(conn);
                 if (conn2.State == ConnectionState.Closed)
                 {

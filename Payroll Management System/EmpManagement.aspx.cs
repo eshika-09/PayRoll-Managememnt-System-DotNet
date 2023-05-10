@@ -22,11 +22,10 @@ namespace Payroll_Management_System
             if (!IsPostBack)
             {
                 BindData();
-
             }
         }
 
-            protected void Button4_Click(object sender, EventArgs e)
+        protected void Button4_Click(object sender, EventArgs e)
         {
             if (CheckMemeberExist())
             {
@@ -41,7 +40,7 @@ namespace Payroll_Management_System
 
         //GO BUTTON
         protected void LinkButton4_Click(object sender, EventArgs e)
-        
+
         {
             try
             {
@@ -51,21 +50,20 @@ namespace Payroll_Management_System
                 {
                     conn1.Open();
                 }
-               
+
                 OracleCommand cmd = new OracleCommand("select full_name,account_status,dob,phone,email,state,city,pincode,address from signup where empid = '" + txtid.Text.Trim() + "'", conn1);
                 OracleDataReader dr = cmd.ExecuteReader();
+
                 if (dr.HasRows)
                 {
                     while (dr.Read())
                     {
-                        DateTime dob = Convert.ToDateTime(txtdob.Text.ToString()).Date;
-                        DateTimeFormatInfo mfi = new DateTimeFormatInfo();
-                        string strMonthName = mfi.GetAbbreviatedMonthName(dob.Month);
-                        string _dob = dob.Day + "-" + strMonthName + "-" + dob.Year;
-
                         txtname.Text = dr["full_name"].ToString();
                         txtstatus.Text = dr["account_status"].ToString();
-                        txtdob.Text = dr["dob"].ToString();
+                        //string emp_dob = Convert.ToDateTime(dr["dob"]).Day + "-" + Convert.ToDateTime(dr["dob"]).Month + "-" + Convert.ToDateTime(dr["dob"]).Year;//dr["dob"].ToString();
+                        DateTime empdob = Convert.ToDateTime(dr["dob"].ToString());
+                        txtdob.Text = empdob.ToString("dd-MM-yyyy");
+                        //txtdob.Text = dr["dob"].ToString(); //emp_dob;
                         txtphone.Text = dr["phone"].ToString();
                         txtmail.Text = dr["email"].ToString();
                         txtstate.Text = dr["state"].ToString();
@@ -96,7 +94,7 @@ namespace Payroll_Management_System
             {
                 throw ex;
             }
-            
+
         }
         bool CheckMemeberExist()
         {
@@ -107,7 +105,7 @@ namespace Payroll_Management_System
                 {
                     conn2.Open();
                 }
-               
+
                 OracleCommand cmd2 = new OracleCommand("select * from signup where empid = '" + txtid.Text.Trim() + "'", conn2);
                 OracleDataAdapter da = new OracleDataAdapter(cmd2);
                 DataTable dt = new DataTable();
@@ -138,7 +136,7 @@ namespace Payroll_Management_System
                 {
                     conn2.Open();
                 }
-                OracleCommand cmd = new OracleCommand("delete from EmpManage where empid = '" + txtid.Text.Trim() + "'", conn2);
+                OracleCommand cmd = new OracleCommand("delete from signup  where empid = '" + txtid.Text.Trim() + "'", conn2);
                 cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
                 Response.Write("<script>alert('Employee Deleted Successfully');</script>");
@@ -158,7 +156,7 @@ namespace Payroll_Management_System
             {
                 conn2.Open();
             }
-           
+
             OracleCommand cmd = new OracleCommand("select empid,full_name,account_status,dob,phone,email,state,city,pincode,address from signup", conn2);
             OracleDataAdapter da = new OracleDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -168,17 +166,17 @@ namespace Payroll_Management_System
         }
         void clearForm()
         {
-           
+
             txtname.Text = "";
             txtdob.Text = "";
             txtphone.Text = "";
             txtmail.Text = "";
             txtstatus.Text = "";
+            txtstate.Text = "";
             txtcity.Text = "";
             txtpin.Text = "";
             txtaddress.Text = "";
             txtid.Text = "";
-            //TextBox5.Text = "";
         }
 
 
@@ -192,20 +190,19 @@ namespace Payroll_Management_System
                 {
                     conn3.Open();
                 }
-              
+
                 OracleCommand cmd1 = new OracleCommand("update signup set account_status ='Active' where empid='" + txtid.Text.Trim() + "'", conn3);
                 cmd1.ExecuteNonQuery();
                 cmd1.Connection.Close();
                 Response.Write("<script>alert('Status Updated Successfully');</script>");
                 DataBind();
-                clearForm();
-              
+
             }
 
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
-                
+
             }
             BindData();
         }
@@ -221,13 +218,12 @@ namespace Payroll_Management_System
                 {
                     conn3.Open();
                 }
-                
+
                 OracleCommand cmd1 = new OracleCommand("update signup set account_status ='Pending' where empid='" + txtid.Text.Trim() + "'", conn3);
                 cmd1.ExecuteNonQuery();
                 cmd1.Connection.Close();
                 Response.Write("<script>alert('Status Updated Successfully');</script>");
                 DataBind();
-                clearForm();
 
             }
 
@@ -249,13 +245,12 @@ namespace Payroll_Management_System
                 {
                     conn3.Open();
                 }
-              
+
                 OracleCommand cmd1 = new OracleCommand("update signup set account_status ='Deactive' where empid='" + txtid.Text.Trim() + "'", conn3);
                 cmd1.ExecuteNonQuery();
                 cmd1.Connection.Close();
                 Response.Write("<script>alert('Status Updated Successfully');</script>");
                 DataBind();
-                clearForm();
 
             }
 
@@ -302,7 +297,7 @@ namespace Payroll_Management_System
                     cmd.Parameters.AddWithValue("city", txtcity.Text.Trim());
                     cmd.Parameters.AddWithValue("pincode", txtpin.Text.Trim());
                     cmd.Parameters.AddWithValue("address", txtaddress.Text.Trim());
-                   // cmd.Parameters.AddWithValue("ctc", TextBox5.Text.Trim());
+                    // cmd.Parameters.AddWithValue("ctc", TextBox5.Text.Trim());
                     cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
                     cmd.Connection.Close();

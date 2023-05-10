@@ -1,3 +1,5 @@
+--CREATE TABLE--
+
 create table EmpSalaryTbl
 (
 EmpId int,
@@ -14,7 +16,7 @@ UAN varchar(50)
 
 --------------------------------------------------------
 --------------------------------------------------------
---PROCEDURE QUERY--
+--PROCEDURE QUERY(NOT USED IN CODE)--
 create procedure GetSalaryDetail
 empid varchar(5),
 PaidMonth varchar2(12);

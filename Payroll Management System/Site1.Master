@@ -17,21 +17,15 @@
 
 
     <style type="text/css">
-        body {
+      /*  body {
             background: rgb(153,0,65);
             background: linear-gradient(90deg, rgba(153,0,65,0.8687850140056023) 0%, rgba(153,153,153,0.9528186274509804) 35%, rgba(255,255,255,0.7875525210084033) 100%);
-        }
+        }*/
 
         /*HEADER AND NAV BAR*/
-        .active1 {
-            float: right;
-            display: inline;
-            text-decoration: none;
-            list-style: none;
-        }
 
         .navbar navbar-expand-lg navbar-light {
-            visibility:hidden;
+            visibility: hidden;
         }
 
         /*FOOTER*/
@@ -68,9 +62,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="About1.aspx">Home</a>
+                            <a class="nav-link" href="HomePage.aspx">Home</a>
                         </li>
-
                         <li class="nav-item active">
                             <asp:LinkButton class="nav-link" ID="UserLogin" runat="server" OnClick="UserLogin_Click">User Login</asp:LinkButton>
                         </li>
@@ -121,7 +114,6 @@
             </asp:ContentPlaceHolder>
         </div>
         <footer>
-
             <div id="footer1" class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -131,8 +123,6 @@
             </div>
 
         </footer>
-
     </form>
 </body>
 </html>
-

@@ -26,7 +26,6 @@ namespace Payroll_Management_System
         {
             BindData();
         }
-
         void BindData()
         {
             OracleConnection conn2 = new OracleConnection(conn);
@@ -78,7 +77,6 @@ namespace Payroll_Management_System
                 {
                     conn1.Open();
                 }
-                //OracleCommand cmd = new OracleCommand("select full_name,dept,designation,basic_pay,hra,pf,ma,da,food,leaves,earnings,deduction,NetSalary from salarytbl_1 where empid='"+id.Text.Trim()+"'", conn1);
 
                 OracleCommand cmd = new OracleCommand("select full_name,dept,designation,basic_pay,hra,pf,ma,da,food,leaves,earnings,deduction,NetSalary from salarytbl_1 where empid='" + emp_id + "'", conn1);
 
@@ -115,7 +113,6 @@ namespace Payroll_Management_System
         {
             ExportGridToExcel();
         }
-
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -147,8 +144,7 @@ namespace Payroll_Management_System
 
         public override void VerifyRenderingInServerForm(Control control)
         {
-            /* Confirms that an HtmlForm control is rendered for the specified ASP.NET
-               server control at run time. */
+
         }
     }
 }
