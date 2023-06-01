@@ -118,7 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Demo1.aspx" />
+    <Content Include="Demo.aspx" />
     <Content Include="EmpProfile.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="AdminLogin.aspx" />
@@ -2556,12 +2556,12 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Demo1.aspx.cs">
-      <DependentUpon>Demo1.aspx</DependentUpon>
+    <Compile Include="Demo.aspx.cs">
+      <DependentUpon>Demo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Demo1.aspx.designer.cs">
-      <DependentUpon>Demo1.aspx</DependentUpon>
+    <Compile Include="Demo.aspx.designer.cs">
+      <DependentUpon>Demo.aspx</DependentUpon>
     </Compile>
     <Compile Include="EmpProfile.aspx.cs">
       <DependentUpon>EmpProfile.aspx</DependentUpon>

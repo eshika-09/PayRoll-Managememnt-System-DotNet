@@ -1,12 +1,11 @@
 select * from signup;
 select * from salarytbl_1 for update;
-select * from leavetbl;
+select * from leavetbl order by  leaveid asc;
 select * from empmanage;
 
 
 --Inner Join on 2 tables
 select leavetbl.empid, salarytbl_1.dept from leavetbl left join salarytbl_1 on leavetbl.empid = salarytbl_1.empid;
-
 
 --Inner join on 3 tables
 select *

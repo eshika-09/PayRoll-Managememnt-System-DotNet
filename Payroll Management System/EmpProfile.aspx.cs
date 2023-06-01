@@ -184,5 +184,10 @@ namespace Payroll_Management_System
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
+
+        protected void read_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,4 @@
---create table--
+--CREATE TABLE--
 
 create table leavetbl(
 empid varchar2(30) not null,

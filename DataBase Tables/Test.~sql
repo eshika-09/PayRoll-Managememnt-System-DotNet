@@ -1,6 +1,6 @@
 select * from signup;
 select * from salarytbl_1 for update;
-select * from leavetbl;
+select * from leavetbl order by  leaveid asc;
 select * from empmanage;
 
 

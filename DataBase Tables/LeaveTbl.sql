@@ -44,3 +44,32 @@ CREATE SEQUENCE leave_seq
 
 --DELETE SEQ--
 DROP SEQUENCE leave_seq
+
+
+--PROCEDURE--
+CREATE OR REPLACE PROCEDURE apply_for_leave (
+  p_employee_id IN NUMBER,
+  p_leave_start_date IN DATE,
+  p_leave_end_date IN DATE,
+  p_reason IN VARCHAR2
+) AS
+  v_leave_id NUMBER;
+BEGIN
+  -- Insert leave application into the database
+  INSERT INTO leave_applications (employee_id, leave_start_date, leave_end_date, reason)
+  VALUES (p_employee_id, p_leave_start_date, p_leave_end_date, p_reason)
+  RETURNING leave_id INTO v_leave_id;
+  
+  -- Display a success message
+  DBMS_OUTPUT.PUT_LINE('Leave application submitted successfully. Leave ID: ' || v_leave_id);
+  
+  -- You can perform additional actions or validations here, such as sending notifications
+  
+  COMMIT;
+EXCEPTION
+  WHEN OTHERS THEN
+    -- Handle any exceptions that occur during the process
+    ROLLBACK;
+    DBMS_OUTPUT.PUT_LINE('Error: ' || SQLCODE || ' - ' || SQLERRM);
+END;
+/
